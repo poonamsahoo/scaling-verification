@@ -12,6 +12,7 @@ from threading import Thread
 
 from utils import generate_openai, generate_anthropic, generate_together
 
+# PS NOTE: I think you can just add the model names here and it works?
 # Add model provider mapping
 MODEL_PROVIDERS = {
     "gpt-4o-mini": "openai",
@@ -24,6 +25,7 @@ MODEL_PROVIDERS = {
     "deepseek-ai/DeepSeek-R1": "together",
     "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo": "together",
     "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo": "together",
+    "Qwen/Qwen2.5-Coder-32B-Instruct":"together",
 }
 
 # Add provider to generator mapping
@@ -256,6 +258,43 @@ def load_gpqa_dataset(config_name: str) -> Dataset:
     print(f"Type: {transformed_ds[0]['type']}")
     print(f"Subject: {transformed_ds[0]['subject']}")
     print(f"Number of examples: {len(transformed_ds)}")
+    
+    return transformed_ds
+
+'''load AIME 2024 dataset; modified from load_math_dataset
+'''
+def load_aime24_dataset(max_rows: Optional[int] = None) -> Dataset:
+    # Load dataset
+    dataset = load_dataset("math-ai/aime24")
+    # Get the first available split (either 'train' or 'test')
+    split_name = 'train' if 'train' in dataset else 'test'
+    dataset = dataset[split_name]
+    
+    # Limit rows if specified
+    if max_rows is not None:
+        dataset = dataset.select(range(min(max_rows, len(dataset))))
+    
+    # Transform into required format
+    def format_problem(example):
+        problem = (
+            f"Problem: {example['problem']}\n\n"
+            f"Please solve this step by step, then output your answer on a new line as 'The answer is: X'"
+        )
+        
+        return {
+            'problem': problem,
+            'answer': example['solution'],  # Keep original solution
+            'subject': example.get('subject', 'mathematics')  # Add subject if not present
+        }
+    
+    transformed_ds = dataset.map(format_problem)
+    
+    # Print an example prompt
+    print("\nExample AIME24 prompt:")
+    print("-" * 80)
+    print(transformed_ds[0]['problem'])
+    print("-" * 80)
+    print(f"Expected answer format: The answer is: {transformed_ds[0]['answer']}")
     
     return transformed_ds
 

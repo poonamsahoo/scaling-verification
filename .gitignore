@@ -33,3 +33,6 @@ checkpoints/
 *.log
 *.out
 *.err
+
+# scratchwork
+scripts/scratchwork/
