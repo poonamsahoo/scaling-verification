@@ -541,7 +541,7 @@ class ReasoningGenerator:
 def main():
     parser = argparse.ArgumentParser(description="Generate reasoning samples from dataset")
     parser.add_argument("--model", type=str, required=True, help="Model name or path")
-    parser.add_argument("--dataset", type=str, required=True, choices=["mmlu", "mmlu_pro", "math", "gpqa", "gpqa_diamond"], help="Benchmark dataset name")
+    parser.add_argument("--dataset", type=str, required=True, choices=["mmlu", "mmlu_pro", "math", "gpqa", "gpqa_diamond", "aime24"], help="Benchmark dataset name")
     parser.add_argument("--output_path", type=str, required=True, help="Output path for dataset")
     parser.add_argument("--max_rows", type=int, help="Maximum number of rows to process")
     parser.add_argument("--batch_size", type=int, default=4, help="Batch size for generation")
@@ -584,6 +584,8 @@ def main():
         dataset = load_gpqa_dataset("gpqa_diamond")
     elif args.dataset.lower() == "math":
         dataset = load_math_dataset(args.max_rows)
+    elif args.dataset.lower() == "aime24":
+        dataset = load_aime24_dataset(args.max_rows)
     else:
         raise ValueError(f"Unsupported dataset: {args.dataset}")
     
