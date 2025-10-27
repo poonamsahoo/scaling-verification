@@ -298,6 +298,44 @@ def load_aime24_dataset(max_rows: Optional[int] = None) -> Dataset:
     
     return transformed_ds
 
+'''load GSM8K dataset; modified from load_math_dataset
+We use the "main" configuration of the dataset instead of the socratic configuration.
+'''
+
+def load_GSM8K_dataset(max_rows: Optional[int] = None) -> Dataset:
+    # Load dataset
+    dataset = load_dataset("openai/gsm8k", "main")
+    # Get the first available split (either 'train' or 'test')
+    split_name = 'train' if 'train' in dataset else 'test'
+    dataset = dataset[split_name]
+
+    # Limit rows if specified
+    if max_rows is not None:
+        dataset = dataset.select(range(min(max_rows, len(dataset))))
+    
+    def format_problem(example):
+        problem = (
+            f"Problem: {example['question']}\n\n"
+            f"Please solve this step by step, then output your answer on a new line as 'The answer is: X'"
+        )
+        
+        return {
+            'problem': problem,
+            'answer': example['answer'],  # Keep original solution
+            'subject': example.get('subject', 'mathematics')  # Add subject if not present
+        }
+    
+    transformed_ds = dataset.map(format_problem)
+    
+    # Print an example prompt
+    print("\nExample GSM8K prompt:")
+    print("-" * 80)
+    print(transformed_ds[0]['problem'])
+    print("-" * 80)
+    print(f"Expected answer format: The answer is: {transformed_ds[0]['answer']}")
+    
+    return transformed_ds
+    
 
 class ReasoningGenerator:
     def __init__(
@@ -580,7 +618,7 @@ class ReasoningGenerator:
 def main():
     parser = argparse.ArgumentParser(description="Generate reasoning samples from dataset")
     parser.add_argument("--model", type=str, required=True, help="Model name or path")
-    parser.add_argument("--dataset", type=str, required=True, choices=["mmlu", "mmlu_pro", "math", "gpqa", "gpqa_diamond", "aime24"], help="Benchmark dataset name")
+    parser.add_argument("--dataset", type=str, required=True, choices=["mmlu", "mmlu_pro", "math", "gpqa", "gpqa_diamond", "aime24", "gsm8k"], help="Benchmark dataset name")
     parser.add_argument("--output_path", type=str, required=True, help="Output path for dataset")
     parser.add_argument("--max_rows", type=int, help="Maximum number of rows to process")
     parser.add_argument("--batch_size", type=int, default=4, help="Batch size for generation")
@@ -625,6 +663,8 @@ def main():
         dataset = load_math_dataset(args.max_rows)
     elif args.dataset.lower() == "aime24":
         dataset = load_aime24_dataset(args.max_rows)
+    elif args.dataset.lower() == "gsm8k":
+        dataset = load_GSM8K_dataset(args.max_rows)
     else:
         raise ValueError(f"Unsupported dataset: {args.dataset}")
     
