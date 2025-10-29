@@ -491,6 +491,7 @@ JUDGE_REGISTRY = {
     "Qwen-2.5-7B-Instruct": {"model": "Qwen/Qwen2.5-7B-Instruct", "provider": None},
     "Qwen-2.5-Math-7B-Instruct": {"model": "Qwen/Qwen2.5-Math-7B-Instruct", "provider": None},
     "Mistral-7B-Instruct-v0.2": {"model": "mistralai/Mistral-7B-Instruct-v0.2", "provider": None},
+    "Llemma-7B": {"model": "EleutherAI/llemma_7b", "provider": None},
 
     #########################################################
     
