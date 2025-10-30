@@ -385,6 +385,7 @@ def process_with_reward_model(
                     }
             
             return scores_by_row
+        #### ADD NEW VERIFIERS HERE ####
         
         elif model_name == "DecisionTreeReward8B":
             model = DecisionTreeRewardModel8B(device=device, batch_size=batch_size, max_input_length=max_input_length)
