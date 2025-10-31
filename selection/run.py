@@ -494,7 +494,7 @@ def train(args):
         wandb.run.log_artifact(artifact)
 
         # Also save a local JSON summary of key metrics (mirrors W&B logs)
-        if args.k is not None:
+        if True: # args.k is not None:
             summary = {
                 "train_select_accuracy": float(df_train['top1_positive'].mean()),
                 "test_select_accuracy": float(df_test['top1_positive'].mean()),
@@ -518,6 +518,8 @@ def train(args):
             summary_file = 'results/hparam_search_summary_'+args.log_dataset_dev+'.csv'
             summary_df = pd.DataFrame([summary])
             summary_df['k'], summary_df['alpha'], summary_df['beta'], summary_df['gamma'] = args.k, args.alpha, args.beta, args.gamma
+            if args.k is None:
+                summary_df['k'] = len(data.verifier_names)
             summary_df.to_csv(summary_file, mode='a', index=False, header=not os.path.exists(summary_file))
 
             console.print(f"\n[bold green]✅ Summary saved to {summary_file}[/bold green].")
