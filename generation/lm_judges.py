@@ -253,7 +253,28 @@ class LMJudge:
         batch_prompts = []
         for instruction, sample in zip(batch_instructions, batch_samples):
             messages = create_evaluation_prompt(instruction, sample)
-            prompt = self.tokenizer.apply_chat_template(messages, tokenize=False)
+            # Fallback for models without chat templates (e.g., EleutherAI/llemma_7b)
+            try:
+                if getattr(self.tokenizer, "chat_template", None):
+                    prompt = self.tokenizer.apply_chat_template(messages, tokenize=False)
+                else:
+                    # Linearize messages into a plain completion prompt
+                    parts = []
+                    for msg in messages:
+                        role = msg.get("role", "user").capitalize()
+                        content = msg.get("content", "")
+                        parts.append(f"{role}:\n{content}\n")
+                    parts.append("Assistant:\n")
+                    prompt = "\n".join(parts)
+            except Exception:
+                # As a last resort, use a simple concatenation
+                parts = []
+                for msg in messages:
+                    role = msg.get("role", "user").capitalize()
+                    content = msg.get("content", "")
+                    parts.append(f"{role}:\n{content}\n")
+                parts.append("Assistant:\n")
+                prompt = "\n".join(parts)
             batch_prompts.append(prompt)
         
         try:
@@ -418,7 +439,26 @@ class LMJudge:
                 messages = create_critique_prompt(instruction, sample)
                 logging.debug(f"Created critique prompt: {messages}")  # Debug prompt creation
                 if self.config.provider not in ['openai', 'anthropic']:
-                    prompt = self.tokenizer.apply_chat_template(messages, tokenize=False)
+                    # Fallback for models without chat templates
+                    try:
+                        if getattr(self.tokenizer, "chat_template", None):
+                            prompt = self.tokenizer.apply_chat_template(messages, tokenize=False)
+                        else:
+                            parts = []
+                            for msg in messages:
+                                role = msg.get("role", "user").capitalize()
+                                content = msg.get("content", "")
+                                parts.append(f"{role}:\n{content}\n")
+                            parts.append("Assistant:\n")
+                            prompt = "\n".join(parts)
+                    except Exception:
+                        parts = []
+                        for msg in messages:
+                            role = msg.get("role", "user").capitalize()
+                            content = msg.get("content", "")
+                            parts.append(f"{role}:\n{content}\n")
+                        parts.append("Assistant:\n")
+                        prompt = "\n".join(parts)
                     batch_prompts.append(prompt)
                     logging.debug(f"Applied chat template: {prompt[:200]}...")  # Debug template application
                 

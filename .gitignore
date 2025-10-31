@@ -33,6 +33,7 @@ checkpoints/
 *.log
 *.out
 *.err
+*.ipynb
 
 # scratchwork
 scripts/scratchwork/
