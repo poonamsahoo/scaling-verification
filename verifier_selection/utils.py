@@ -62,7 +62,7 @@ def dev_test_split(dataset: Dataset):
 
 def extract_scores_matrix(dataset: Dataset) -> np.ndarray:
     # Extract all verifier score columns
-    verifier_columns = [col for col in dataset[0].keys() if col.endswith('_scores') and 'weaver' not in col]
+    verifier_columns = [col for col in dataset[0].keys() if (col.endswith('_scores') or col.endswith('_verdicts')) and 'weaver' not in col]
     print(f"Number of verifiers: {len(verifier_columns)}")
 
     # Create a matrix to store all verifier scores across all problems
@@ -75,11 +75,11 @@ def extract_scores_matrix(dataset: Dataset) -> np.ndarray:
         for problem in dataset:
             scores_for_verifier.extend(problem[col])
         all_scores.append(scores_for_verifier)
-        verifier_names.append(col.replace('_scores', ''))
+        verifier_names.append(col)
 
     scores_matrix = np.array(all_scores).T
     return scores_matrix, verifier_names
-    
+
 
 def utilities_dict(scores_matrix: np.ndarray, dataset: Dataset, verifier_names: List[str]) -> dict[str, float]:
     ## Model Selection: Balancing Diversity vs Utility

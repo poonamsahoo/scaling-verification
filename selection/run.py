@@ -324,7 +324,11 @@ def main(args) -> None:
 
     print("W&B config: ", args.wandb_cfg)
     if args.logging == "wandb":
-        wandb.init(**args.wandb_cfg, config=OmegaConf.to_container(args, resolve=True))
+        # Filter out None/null/empty entity to avoid errors
+        wandb_cfg = {k: v for k, v in args.wandb_cfg.items() 
+                     if v is not None and v != "null" and v != ""}
+        # If entity is not set or invalid, wandb will use default (your username)
+        wandb.init(**wandb_cfg, config=OmegaConf.to_container(args, resolve=True))
     train(args)
     if args.logging == "wandb":
         wandb.finish()
