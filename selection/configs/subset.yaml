@@ -43,14 +43,18 @@ model_cfg:
 fit_cfg:
   fit_type: "wclosest_to_train" # Options: "wclosest_to_train", "search_weights"
 
-now_str: ${now:%Y%m%d_%H%M%S}
+# now_str: ${now:%Y%m%d_%H%M%S}
 log_dataset_name: ${data_cfg.dataset_path}
-log_dataset_dev: "dev"
+log_dataset_dev: "val"
 logging: "wandb"
+k: null
+alpha: null
+beta: null
+gamma: null
 wandb_cfg:
   project: "verification"
   entity: 329a # "${oc.env:WANDB_ENTITY}"
-  name: "${log_dataset_name}-${log_dataset_dev}-subset-${now_str}" # auto increment name
+  name: "${log_dataset_name}-${log_dataset_dev}-subset" # -${now_str} auto increment name
 
 # Model-specific parameters
 model_params:

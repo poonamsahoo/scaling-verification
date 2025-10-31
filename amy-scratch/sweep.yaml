@@ -1,0 +1,30 @@
+program: sweep_eval.py
+entity: "329a"
+project: "verification"
+method: grid
+metric:
+  name: train_select_accuracy
+  goal: maximize
+parameters:
+  hub_name:
+    value: amyguan/math500-k50-80-10-10
+  config_name:
+    value: subset
+  log_dataset_name:
+    value: math500-k50-80-10-10
+  log_dataset_dev:
+    value: val
+  wandb_project:
+    value: verification
+  # set this to your entity or remove to use default account
+  wandb_entity:
+    value: "329a"
+  k:
+    values: [5, 10]
+  alpha:
+    values: [1.0]
+  beta:
+    values: [0.25, 0.5, 1.0]
+  gamma:
+    values: [0.25, 0.5, 1.0]
+

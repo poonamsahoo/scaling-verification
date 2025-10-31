@@ -2,6 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 from pathlib import Path
+import json
 import hydra
 from omegaconf import OmegaConf
 from weaver.dataset import VerificationDataset, ClusteringDataset
@@ -492,7 +493,36 @@ def train(args):
         artifact.add_file(local_path=test_file, name="test")
         wandb.run.log_artifact(artifact)
 
-    console.print(f"\n[bold green]✅ Training and evaluation complete![/bold green]")
+        # Also save a local JSON summary of key metrics (mirrors W&B logs)
+        if args.k is not None:
+            summary = {
+                "train_select_accuracy": float(df_train['top1_positive'].mean()),
+                "test_select_accuracy": float(df_test['top1_positive'].mean()),
+                "train_sample_accuracy": float(df_train['sample_accuracy'].mean()),
+                "test_sample_accuracy": float(df_test['sample_accuracy'].mean()),
+                "train_top1_accuracy": float(top1_acc_train) if top1_acc_train == top1_acc_train else None,
+                "test_top1_accuracy": float(top1_acc_test) if top1_acc_test == top1_acc_test else None,
+                "num_verifiers": int(len(data.verifier_names)),
+                "verifiers": str(list(map(str, data.verifier_names))),
+                "wandb_run_id": run_id,
+            }
+
+            # Per-difficulty metrics (keys consistent with W&B logs above)
+            for _, row in difficulty_df.iterrows():
+                difficulty = int(row['Difficulty'])
+                summary[f"train_select_accuracy_diff_{difficulty}"] = float(row['Train_Select_Acc'])
+                summary[f"test_select_accuracy_diff_{difficulty}"] = float(row['Test_Select_Acc'])
+                summary[f"train_problems_diff_{difficulty}"] = int(row['Train_Problems'])
+                summary[f"test_problems_diff_{difficulty}"] = int(row['Test_Problems'])
+
+            summary_file = 'results/hparam_search_summary_'+args.log_dataset_dev+'.csv'
+            summary_df = pd.DataFrame([summary])
+            summary_df['k'], summary_df['alpha'], summary_df['beta'], summary_df['gamma'] = args.k, args.alpha, args.beta, args.gamma
+            summary_df.to_csv(summary_file, mode='a', index=False, header=not os.path.exists(summary_file))
+
+            console.print(f"\n[bold green]✅ Summary saved to {summary_file}[/bold green].")
+
+    console.print(f"\n[bold green]✅ Training and evaluation complete![/bold green].")
     
     if args.data_cfg.get('save_weaver_scores', False):
         save_weaver_scores_to_dataset(data, model, df_test, args)

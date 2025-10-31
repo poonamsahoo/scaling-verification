@@ -54,19 +54,46 @@ def load_dataset(dataset_name="hazyresearch/MATH500_with_Llama_3.1_70B_Instruct_
     return dataset
 
 
-def dev_test_split(dataset: Dataset):
-    splits = dataset.train_test_split(test_size=0.8, seed=422)
-    dev_ds, test_ds = splits["train"], splits["test"]
-    return dev_ds, test_ds
+"""
+hub_name example: "amyguan/math500-k50"
+"""
+def dev_test_split(dataset: Dataset, test_size=0.8, val_size=None, hub_name=None):
+    dev_ds, val_ds, test_ds = None, None, None
+
+    # if hub_name is not None:
+    #     try:
+    #         dev_ds = datasets.load_dataset(f"{hub_name}-dev")["data"]
+    #         val_ds = datasets.load_dataset(f"{hub_name}-val")["data"]
+    #         test_ds = datasets.load_dataset(f"{hub_name}-test")["data"]
+    #         return dev_ds, val_ds, test_ds
+    #     except:
+    #         pass
+
+    if val_size is not None:
+        splits = dataset.train_test_split(test_size=test_size, seed=422)
+        dev_ds, test_ds = splits["train"], splits["test"]
+        # train=0.1, val=0.1, test=0.8
+        splits = dev_ds.train_test_split(test_size=val_size/(1-test_size), seed=423)
+        dev_ds, val_ds = splits["train"], splits["test"]
+    else:
+        splits = dataset.train_test_split(test_size=test_size, seed=422)
+        dev_ds, test_ds = splits["train"], splits["test"]
+
+    if hub_name is not None:
+        dev_ds.push_to_hub(f"{hub_name}-dev", private=False)
+        test_ds.push_to_hub(f"{hub_name}-test", private=False)
+        if val_ds is not None:
+            val_ds.push_to_hub(f"{hub_name}-val", private=False)
+
+    return dev_ds, val_ds, test_ds
 
 
 def extract_scores_matrix(dataset: Dataset) -> np.ndarray:
-    # Extract all verifier score columns
+    # Extract all verifier columns
     verifier_columns = [col for col in dataset[0].keys() if (col.endswith('_scores') or col.endswith('_verdicts')) and 'weaver' not in col]
     print(f"Number of verifiers: {len(verifier_columns)}")
 
     # Create a matrix to store all verifier scores across all problems
-    # Shape: (num_problems * K, num_verifiers)
     all_scores = []
     verifier_names = []
 
@@ -82,10 +109,6 @@ def extract_scores_matrix(dataset: Dataset) -> np.ndarray:
 
 
 def utilities_dict(scores_matrix: np.ndarray, dataset: Dataset, verifier_names: List[str]) -> dict[str, float]:
-    ## Model Selection: Balancing Diversity vs Utility
-
-    # First, let's create ground truth labels for utility assessment
-    # We'll use the answer_correct labels as our target
     ground_truth = []
     for problem in dataset:
         ground_truth.extend(problem['answer_correct'])
@@ -157,16 +180,18 @@ def greedy_select(
             costs = np.zeros_like(param_counts_vec)
     # costs = np.zeros(n, dtype=float) if costs is None else costs.astype(float)
 
-    selected: List[int] = []
-    remaining: set[int] = set(range(n))
+    selected = []
+    remaining = set(range(n))
 
     if start_index is None:
         # start with the best utility, penalized by cost
         start_index = int(np.nanargmax(utilities - gamma * costs))
+
     selected.append(start_index)
     remaining.remove(start_index)
 
-    def set_similarity(idx: int, chosen: List[int]) -> float:
+    # idx = candidate verifier, chosen = verifiers that have alr been selected
+    def get_similarity(idx: int, chosen: List[int]) -> float:
         if len(chosen) == 0:
             return 0.0
         if agg == "max":
@@ -174,15 +199,15 @@ def greedy_select(
         else:
             return float(np.nanmean(similarity_matrix[idx, chosen]))
 
-    step_scores: List[float] = [float(alpha * utilities[start_index] - gamma * costs[start_index])]
+    step_scores = [float(alpha * utilities[start_index] - gamma * costs[start_index])]
 
     while len(selected) < k and remaining:
         best_idx = None
         best_score = -1e18
         for j in list(remaining):
-            sim_pen = set_similarity(j, selected)
+            sim_penalty = get_similarity(j, selected)
             cost_pen = costs[j]
-            score = alpha * float(utilities[j]) - beta * sim_pen - gamma * cost_pen
+            score = alpha * float(utilities[j]) - beta * sim_penalty - gamma * cost_pen
             if score > best_score:
                 best_score = score
                 best_idx = j
