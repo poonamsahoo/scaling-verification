@@ -515,7 +515,7 @@ def train(args):
                 summary[f"train_problems_diff_{difficulty}"] = int(row['Train_Problems'])
                 summary[f"test_problems_diff_{difficulty}"] = int(row['Test_Problems'])
 
-            summary_file = 'results/hparam_search_summary_'+args.log_dataset_dev+'.csv'
+            summary_file = 'results/hparam_search_summary_'+args.log_dataset_dev+'1percent.csv'
             summary_df = pd.DataFrame([summary])
             summary_df['k'], summary_df['alpha'], summary_df['beta'], summary_df['gamma'] = args.k, args.alpha, args.beta, args.gamma
             if args.k is None:

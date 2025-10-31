@@ -8,7 +8,7 @@ verifier_cfg:
 
 data_cfg:
   dataset_name: null # Options: "MATH-500", "MMLU-Pro", "MMLU", "GPQA", "GPQA-Diamond", "GPQA-1K" (ignored if dataset_path is set)
-  dataset_path: "amyguan/math500-k50-80-10-10-dev" # Optional: custom dataset path (HF hub or local disk)
+  dataset_path: "amyguan/math500-k50-1-5-94-dev" # Optional: custom dataset path (HF hub or local disk)
   train_split: 1.0 # 1.0 = no test set, <1.0 = fraction for training
   train_queries: 1 # Fraction or number of training queries to use
   train_samples: 1 # Fraction of samples per problem to use

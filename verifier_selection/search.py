@@ -7,9 +7,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def main():
-    hub_name = "amyguan/math500-k50-80-10-10"
+    hub_name = "amyguan/math500-k50-1-5-94"
+    # hub_name = "amyguan/math500-k50-80-10-10"
     dev_ds = datasets.load_dataset(f"{hub_name}-dev")["data"]
-    val_ds = datasets.load_dataset(f"{hub_name}-val")["data"]
+    # val_ds = datasets.load_dataset(f"{hub_name}-val")["data"]
     # test_ds = datasets.load_dataset(f"{hub_name}-test")["data"]
 
     ### COMPUTE DEV METRICS ###
@@ -19,7 +20,7 @@ def main():
     param_counts = utils.costs_dict(verifier_names)
 
     ### INIT WANDB ###
-    wandb.init(entity="329a", project="verification", name="verifier_hparam_search")
+    wandb.init(entity="329a", project="verification", name="verifier_hparam_search_1percent")
 
     ### HYPERPARAMETER SEARCH ###
     alpha = 1.0
@@ -45,9 +46,12 @@ def main():
         plt.tight_layout()
         return fig
 
-    for k in [5, 10, 15]:
-        for beta in [0.25, 0.5, 1.0]:
-            for gamma in [0.25, 0.5, 1.0]:
+    # for k in [5, 10, 15]:
+    #     for beta in [0.25, 0.5, 1.0]:
+    #         for gamma in [0.25, 0.5, 1.0]:
+    for k in [10]:
+        for beta in [1.0]:
+            for gamma in [0.5, 1.0]:
                 sel = utils.greedy_select(
                     utilities,
                     similarities['pearson'],
@@ -100,7 +104,7 @@ def main():
 
     # Log a summary table
     df = pd.DataFrame(results)
-    df.to_csv("verifier_hparam_search_results.csv", index=False)
+    df.to_csv("results/verifier_hparam_search_results_1percent.csv", index=False)
     wandb.log({"hparam_results": wandb.Table(dataframe=df)})
 
     wandb.finish()

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# bash hyperparam.sh --config-name subset
+
 # bash /Users/amyguan/Documents/cs329a/scaling-verification/hyperparam.sh \
 #   --csv /Users/amyguan/Documents/cs329a/scaling-verification/verifier_selection/verifier_hparam_search_results.csv \
 #   --dataset-path amyguan/math500-k50-80-10-10-val \
@@ -15,12 +17,19 @@ set -euo pipefail
 #   --log-name math500-k50-80-10-10 \
 #   --log-dev dev
 
+# CSV_PATH="/Users/amyguan/Documents/cs329a/scaling-verification/results/verifier_hparam_search_results_1percent.csv"
+# DATASET_PATH="amyguan/math500-k50-1-5-94-dev"
+# CONFIG_NAME="subset"
+# LOG_DATASET_NAME="math500-k50-1-5-94"
+# LOG_DATASET_DEV="dev"
+# VERIFIER_COL="selected_verifiers"
+
 CSV_PATH="/Users/amyguan/Documents/cs329a/scaling-verification/results/verifier_hparam_search_results.csv"
-DATASET_PATH="amyguan/math500-k50-80-10-10-val"
+DATASET_PATH="amyguan/math500-k50-80-10-10-dev"
 CONFIG_NAME="subset"
 LOG_DATASET_NAME="math500-k50-80-10-10"
 LOG_DATASET_DEV="dev"
-VERIFIER_COL="selected_verifiers"   # override with --verifier-col if your CSV differs
+VERIFIER_COL="selected_verifiers"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
