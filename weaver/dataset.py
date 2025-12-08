@@ -827,7 +827,7 @@ class VerificationDataset:
         elif self.verifier_cfg.verifier_type == "judges":
             verifier_names = all_judges
         elif self.verifier_cfg.verifier_type == "specific_subset":
-            verifier_names = self.verifier_cfg.verifier_subset
+            verifier_names = [VERIFIER_NAME_MAP.get(v, v) for v in self.verifier_cfg.verifier_subset]
             assert all(v in all_reward_models + all_judges for v in verifier_names), f"Unknown verifiers: {verifier_names} from list {all_reward_models + all_judges}"
         else:
             raise ValueError(f"Unknown verifier type: {self.verifier_cfg.verifier_type}")

@@ -1,0 +1,70 @@
+% Greedy Verifier Selection with Utility, Diversity, and Cost Penalties
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+
+\title{Greedy Verifier Selection with Utility, Diversity, and Cost Penalties}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Notation}
+Let $u_i$ denote the utility of verifier $i$ (e.g., AUC), $S \in \mathbb{R}^{n\times n}$ a pairwise similarity matrix between verifiers, and $C_i \in [0,1]$ a normalized parameter-cost for verifier $i$ (e.g., model size scaled to $[0,1]$). Let $\mathcal{S}_t$ be the set of selected verifiers after step $t$, and let $\alpha,\beta,\gamma \ge 0$ be weights for utility, similarity penalty, and cost penalty, respectively.
+
+\paragraph{Initial scoring (first element).} When choosing the first element (if not provided), define
+\begin{equation}
+\label{eq:initial-score}
+\text{score}_0(i) \;=\; \alpha\,u_i \; - \; \gamma\,C_i,\qquad i^* \;=\; \arg\max_i\, \text{score}_0(i).
+\end{equation}
+
+\paragraph{Aggregation of similarity to the selected set.} For any candidate $j$ and current selected set $\mathcal{S}_t$, define
+\begin{equation}
+\label{eq:sim-agg}
+\operatorname{sim\_agg}(j, \mathcal{S}_t) \;=\;
+\begin{cases}
+\max\limits_{k\in \mathcal{S}_t} S_{jk}, & \text{(max aggregation)} \\
+\frac{1}{|\mathcal{S}_t|} \sum\limits_{k\in \mathcal{S}_t} S_{jk}, & \text{(mean aggregation)}.
+\end{cases}
+\end{equation}
+
+\paragraph{Greedy score at step $t\ge 1$.} For a remaining candidate $j\notin \mathcal{S}_t$,
+\begin{equation}
+\label{eq:greedy-score}
+\text{score}_t(j) \;=\; \alpha\,u_j \; - \; \beta\,\operatorname{sim\_agg}(j, \mathcal{S}_t) \; - \; \gamma\,C_j,
+\end{equation}
+then choose
+\begin{equation}
+\label{eq:argmax-step}
+ j^* \;=\; \arg\max_{j\notin \mathcal{S}_t} \text{score}_t(j),\qquad \mathcal{S}_{t+1} \;=\; \mathcal{S}_t\cup\{j^*\}.
+\end{equation}
+
+\section*{Algorithm}
+\begin{algorithm}[H]
+\caption{Greedy Selection with Utility, Diversity, and Cost Penalty}
+\label{alg:greedy}
+\begin{algorithmic}[1]
+\Require utilities $u\in\mathbb{R}^n$, similarity matrix $S\in\mathbb{R}^{n\times n}$, costs $C\in[0,1]^n$, target size $k$, weights $\alpha,\beta,\gamma\ge 0$, aggregation mode $\textsc{Agg}\in\{\textsc{Max},\textsc{Mean}\}$
+\State $\mathcal{S}_0 \gets \varnothing$; $\mathcal{R} \gets \{1,2,\dots,n\}$ \Comment{remaining}
+\State \textbf{if} start index is not provided \textbf{then}
+\State \hspace{1em} $i^* \gets \arg\max\limits_{i\in\mathcal{R}}\,\big(\alpha\,u_i - \gamma\,C_i\big)$ \hfill (from Eq.~\eqref{eq:initial-score})
+\State \textbf{else}\; $i^*$ is the provided start index
+\State $\mathcal{S}_1 \gets \{i^*\}$; $\mathcal{R} \gets \mathcal{R}\setminus\{i^*\}$; $t\gets 1$
+\While{$|\mathcal{S}_t| < k$ and $\mathcal{R}\neq\varnothing$}
+\State For each $j\in\mathcal{R}$, compute $\operatorname{sim\_agg}(j,\mathcal{S}_t)$ using Eq.~\eqref{eq:sim-agg}
+\State For each $j\in\mathcal{R}$, compute $\text{score}_t(j) = \alpha u_j - \beta\,\operatorname{sim\_agg}(j,\mathcal{S}_t) - \gamma C_j$ \hfill (Eq.~\eqref{eq:greedy-score})
+\State $j^* \gets \arg\max\limits_{j\in\mathcal{R}}\, \text{score}_t(j)$ \hfill (Eq.~\eqref{eq:argmax-step})
+\State $\mathcal{S}_{t+1} \gets \mathcal{S}_t \cup \{j^*\}$; $\mathcal{R} \gets \mathcal{R}\setminus\{j^*\}$; $t\gets t+1$
+\EndWhile
+\State \Return $\mathcal{S}_t$ and the selection order
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Remarks.}
+(i) Normalizing raw parameter counts to $[0,1]$ for $C_i$ makes the cost weight $\gamma$ directly interpretable. (ii) The similarity matrix $S$ can be instantiated via Pearson correlation on raw scores, cosine similarity, or co-agreement between binarized predictions; higher $S_{jk}$ indicates greater redundancy, which is penalized by $\beta$.
+
+\end{document}
