@@ -24,10 +24,10 @@ set -euo pipefail
 # LOG_DATASET_DEV="dev"
 # VERIFIER_COL="selected_verifiers"
 
-CSV_PATH="/Users/amyguan/Documents/cs329a/scaling-verification/results/verifier_hparam_search_results.csv"
-DATASET_PATH="amyguan/math500-k50-80-10-10-dev"
-CONFIG_NAME="subset"
-LOG_DATASET_NAME="math500-k50-80-10-10"
+CSV_PATH="/Users/amyguan/Documents/cs329a/scaling-verification/results/nb_results_10.csv"
+DATASET_PATH="amyguan/math500-k50-80-10-10-dev" # 10%
+CONFIG_NAME="nb"
+LOG_DATASET_NAME="nb-math500-k50-80-10-10"
 LOG_DATASET_DEV="dev"
 VERIFIER_COL="selected_verifiers"
 
