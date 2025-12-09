@@ -1,4 +1,5 @@
 import datasets
+from datasets import Dataset, DatasetDict
 import utils
 import numpy as np
 from sklearn.naive_bayes import GaussianNB
@@ -525,6 +526,49 @@ def fit(hub_name: str = "amyguan/math500-k50-1-5-94", n_clusters: int = 5, use_e
     )
     
     print(f"Visualizations saved to {fig_dir}/")
+    
+    ### ADD CLUSTER PREDICTIONS TO DATASETS AND PUSH TO HUB ###
+    print("\n" + "="*60)
+    print("Adding Cluster Predictions to Datasets")
+    print("="*60)
+    
+    # Add cluster predictions to each dataset
+    def add_cluster_predictions(dataset, predictions, split_name):
+        """Add cluster predictions to dataset entries"""
+        updated_dataset = []
+        for i, example in enumerate(dataset):
+            updated_example = dict(example)  # Copy the example
+            updated_example['nb_diff'] = int(predictions[i])
+            updated_dataset.append(updated_example)
+        return updated_dataset
+    
+    # Convert to datasets.Dataset format and add predictions
+    dev_ds_with_clusters = Dataset.from_list(add_cluster_predictions(dev_ds, dev_predictions, "dev"))
+    val_ds_with_clusters = Dataset.from_list(add_cluster_predictions(val_ds, val_predictions, "val"))
+    test_ds_with_clusters = Dataset.from_list(add_cluster_predictions(test_ds, test_predictions, "test"))
+    
+    print(f"Added 'difficulty_cluster' field to all datasets")
+    print(f"  Dev set: {len(dev_ds_with_clusters)} examples")
+    print(f"  Val set: {len(val_ds_with_clusters)} examples")
+    print(f"  Test set: {len(test_ds_with_clusters)} examples")
+    
+    # Push to hub with new version
+    new_hub_name = f"amyguan/{name}-nb"
+    print(f"\nPushing datasets to hub: {new_hub_name}")
+    
+    try:
+        DatasetDict({"data": dev_ds_with_clusters}).push_to_hub(f"{new_hub_name}-dev", private=False)
+        print(f"✓ Dev set pushed to {new_hub_name}-dev")
+        
+        DatasetDict({"data": val_ds_with_clusters}).push_to_hub(f"{new_hub_name}-val", private=False)
+        print(f"✓ Val set pushed to {new_hub_name}-val")
+        
+        DatasetDict({"data": test_ds_with_clusters}).push_to_hub(f"{new_hub_name}-test", private=False)
+        print(f"✓ Test set pushed to {new_hub_name}-test")
+
+    except Exception as e:
+        print(f"Error pushing to hub: {e}")
+        print("Datasets were prepared but not pushed. You can push them manually.")
     
     ### OPTIONAL: WANDB LOGGING ###
     # wandb.init(entity="329a", project="verification", name="semi_supervised_nb_clustering")
