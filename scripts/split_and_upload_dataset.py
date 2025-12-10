@@ -15,7 +15,7 @@ Usage:
 
 import argparse
 import datasets
-from datasets import Dataset
+from datasets import Dataset, load_dataset
 import sys
 
 
@@ -67,7 +67,88 @@ def split_dataset(
     
     return dev_ds, val_ds, test_ds
 
+    return dev_ds, val_ds, test_ds
 
+
+def add_unique_ids(
+    dataset: Dataset,
+    strategy: str = "none",
+    reference_dataset_name: str = None,
+    id_prefix: str = None
+) -> Dataset:
+    """
+    Add unique_id column to dataset based on strategy.
+    
+    Args:
+        dataset: HuggingFace Dataset
+        strategy: 'none', 'index', or 'map'
+        reference_dataset_name: Name of reference dataset for 'map' strategy
+        id_prefix: Prefix for 'index' strategy (e.g., 'gpqa')
+        
+    Returns:
+        Dataset with unique_id column
+    """
+    if "unique_id" in dataset.column_names:
+        print(f"Dataset already has 'unique_id' column. Skipping ID generation.")
+        return dataset
+        
+    print(f"\nAdding unique IDs with strategy: {strategy}")
+    
+    if strategy == "none":
+        return dataset
+        
+    elif strategy == "index":
+        if not id_prefix:
+            raise ValueError("id_prefix is required for 'index' strategy")
+            
+        def add_id(example, idx):
+            example["unique_id"] = f"{id_prefix}/{idx}"
+            return example
+            
+        return dataset.map(add_id, with_indices=True)
+        
+    elif strategy == "map":
+        if not reference_dataset_name:
+            raise ValueError("reference_dataset is required for 'map' strategy")
+            
+        print(f"Loading reference dataset: {reference_dataset_name}")
+        try:
+            # Try loading 'data' split first, fall back to 'train'
+            try:
+                ref_ds = load_dataset(reference_dataset_name, split="data")
+            except:
+                ref_ds = load_dataset(reference_dataset_name, split="train")
+        except Exception as e:
+            raise ValueError(f"Could not load reference dataset: {e}")
+            
+        if "unique_id" not in ref_ds.column_names:
+            raise ValueError(f"Reference dataset {reference_dataset_name} does not have 'unique_id' column")
+            
+        # Create mapping: instruction -> unique_id
+        # Normalize instructions by stripping whitespace
+        print("Creating instruction -> ID mapping...")
+        instr_to_id = {}
+        for ex in ref_ds:
+            instr = ex.get("instruction", "").strip()
+            if instr:
+                instr_to_id[instr] = ex["unique_id"]
+                
+        print(f"Created mapping with {len(instr_to_id)} entries")
+        
+        def map_id(example):
+            instr = example.get("instruction", "").strip()
+            if instr in instr_to_id:
+                example["unique_id"] = instr_to_id[instr]
+            else:
+                # Fallback or error? For now, let's error to be safe, or maybe warn?
+                # Given we verified the sets match, error is safer to catch issues.
+                raise ValueError(f"Could not find mapping for instruction: {instr[:50]}...")
+            return example
+            
+        return dataset.map(map_id)
+        
+    else:
+        raise ValueError(f"Unknown ID strategy: {strategy}")
 def upload_splits(
     dev_ds: Dataset,
     val_ds: Dataset,
@@ -189,6 +270,23 @@ Examples:
         default="data",
         help="Name of the split to load from the dataset (default: 'data')"
     )
+    parser.add_argument(
+        "--id_strategy",
+        type=str,
+        default="none",
+        choices=["none", "index", "map"],
+        help="Strategy to add unique IDs if missing (default: 'none')"
+    )
+    parser.add_argument(
+        "--reference_dataset",
+        type=str,
+        help="Reference dataset to map IDs from (required for 'map' strategy)"
+    )
+    parser.add_argument(
+        "--id_prefix",
+        type=str,
+        help="Prefix for generated IDs (required for 'index' strategy)"
+    )
     
     args = parser.parse_args()
     
@@ -217,8 +315,20 @@ Examples:
     except Exception as e:
         print(f"Error loading dataset: {e}", file=sys.stderr)
         sys.exit(1)
+        print(f"Error loading dataset: {e}", file=sys.stderr)
+        sys.exit(1)
     
-    # Split dataset
+    # Add unique IDs if requested
+    try:
+        dataset = add_unique_ids(
+            dataset,
+            strategy=args.id_strategy,
+            reference_dataset_name=args.reference_dataset,
+            id_prefix=args.id_prefix
+        )
+    except Exception as e:
+        print(f"Error adding unique IDs: {e}", file=sys.stderr)
+        sys.exit(1)
     try:
         dev_ds, val_ds, test_ds = split_dataset(
             dataset,

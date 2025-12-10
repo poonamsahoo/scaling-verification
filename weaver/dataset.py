@@ -857,6 +857,17 @@ class VerificationDataset:
         # Remove verifiers which we are not using:
         verifier_names = [v for v in verifier_names if "_step" not in v]
 
+        # Deduplicate verifier names while preserving order
+        seen = set()
+        unique_verifier_names = []
+        for v in verifier_names:
+            if v not in seen:
+                seen.add(v)
+                unique_verifier_names.append(v)
+        if len(unique_verifier_names) < len(verifier_names):
+            print(f"Removed {len(verifier_names) - len(unique_verifier_names)} duplicate verifier names")
+        verifier_names = unique_verifier_names
+
         if self.mv_as_verifier:
             print(f"Adding majority vote verifier to the dataset.", flush=True)
             verifier_names += ['mv_verifier']

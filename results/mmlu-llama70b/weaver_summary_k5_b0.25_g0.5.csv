@@ -1,0 +1,2 @@
+dataset_path,k,alpha,beta,gamma,test_select_accuracy,train_select_accuracy,test_sample_accuracy,train_sample_accuracy,num_verifiers,verifiers,train_file,test_file
+wfang11/mmlu-llama70b-10-10-80-dev,5,1.0,0.25,0.5,0.9577464788732394,0.9577464788732394,0.9394366197183097,0.9394366197183097,5,"QwenPRM_max_scores (7.63B), DeepSeekQwen (32B), GPM (8B), QwenPRM_min_scores (7.63B), EurusPRMStage2_avg_scores (7.62B)",results/mmlu-llama70b/weaver_train_k5_b0.25_g0.5.csv,results/mmlu-llama70b/weaver_test_k5_b0.25_g0.5.csv
