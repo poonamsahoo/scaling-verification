@@ -1,0 +1,96 @@
+# Weaver Configuration for MATH-500 with LLM Judge Clusters (Evaluation)
+# Evaluate on test split with cluster-based models
+
+verifier_cfg:
+  verifier_type: "all" # Options: "reward_models", "judges", "all"
+  verifier_size: "all" # Options: "all", "small", "medium", "large", or integer
+  verifier_subset: [] # Optional: specific verifier names to use
+
+data_cfg:
+  dataset_name: null # Ignored when dataset_path is set
+  dataset_path: "pnsahoo/GPQA-llama8b-qwen-judge-test"
+  train_split: 1.0 # Use all test data for evaluation (no training)
+  train_queries: 1 # Fraction or number of training queries to use
+  train_samples: 1 # Fraction of samples per problem to use
+  same_train_test: false
+  nan_replacement: 0 # Replace NaN with: 0 or "mean"
+  random_seed: 0
+  model_size: null # Not needed when dataset_path is set
+  reward_threshold: 0.5 # Binarization threshold, null = no threshold
+  save_weaver_scores: false # Save Weaver scores to dataset
+  
+  # Score normalization
+  normalize_type: "all_problems" # Options: "per_problem", "all_problems"
+  normalize_method: "minmax" # Options: "minmax", "quantile", "winsorize"
+  normalize_params: ${normalize_method_params.${data_cfg.normalize_method}}
+  
+  # Problem similarity (for per-problem models)
+  closest_train_problem_method: "mean_verifier_distance" # Options: "SBERT", "mean_verifier_distance"
+  closest_train_problem_metric_type: "euclidean" # Options: "cosine", "euclidean"
+  
+  verifier_cfg: ${verifier_cfg}
+  mv_as_verifier: true # Include majority vote as a verifier
+  fixed_test_split: null
+  use_cluster_as_difficulty: true # Use cluster IDs instead of difficulty brackets for reporting (only when model_class="cluster")
+
+debug: false
+
+model_cfg:
+  model_type: "weak_supervision" # Weaver weak supervision
+  model_class: "cluster" # Train separate model per cluster
+  model_params: ${model_params.${model_cfg.model_type}}
+  cluster_cfg:
+    n_clusters: 3 # Number of clusters from LLM judge
+    cluster_type: "json" # Load clusters from JSON file
+    embedding_model: "/Users/poonamsahoo/scaling-verification/cluster_assignments_GPQA-llama8b-qwen-judge_test.json" # Path to cluster JSON
+
+fit_cfg:
+  fit_type: "wclosest_to_train" # Options: "wclosest_to_train", "search_weights"
+
+# now_str: ${now:%Y%m%d_%H%M%S}
+log_dataset_name: ${data_cfg.dataset_path}
+log_dataset_dev: "test"
+logging: "wandb"
+wandb_cfg:
+  project: "llm-judge"
+  entity: 329a # "${oc.env:WANDB_ENTITY}"
+  name: "${log_dataset_name}-eval" # Evaluation run on test split -${now_str} auto increment name
+
+# Model-specific parameters
+model_params:
+  weak_supervision:
+    k: 2 # Number of classes
+    seed: 0
+    binarize_threshold: 0.5
+    metric: "scores"
+    n_epochs: 5000
+    mu_epochs: 10000
+    log_train_every: 1000
+    lr: 0.0001
+    use_deps: "drop" # Options: "none", "drop", "model"
+    deps_data_fraction: 1.0
+    use_label_on_test: true
+    drop_imbalanced_verifiers: "adaptive" # Options: null, "all", "small", "large", "adaptive"
+    drop_k: 3 # Number of verifiers to keep when dropping
+    cb_args:
+      class_balance: "labels" # Options: "labels" or float value
+
+  naive_ensemble:
+    tmp: # No parameters required
+    
+  first_sample:
+    tmp: # No parameters required
+
+# Normalization method parameters
+normalize_method_params:
+  minmax:
+    tmp: # No parameters required
+    
+  quantile:
+    output_distribution: "uniform"
+    n_quantiles: 100
+    
+  winsorize:
+    lower_quantile: 0.05
+    upper_quantile: 0.95
+
