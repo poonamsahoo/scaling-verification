@@ -1,10 +1,10 @@
 Difficulty,Type,Num Verifiers,Accuracy
-0, WEAVER + LLM-as-a-Judge Routing,20,0.906
-0,Augmented WEAVER + LLM-as-a-Judge Routing,5,0.969
-1, WEAVER + LLM-as-a-Judge Routing,20,0.930
-1,Augmented WEAVER + LLM-as-a-Judge Routing,5,0.916
-2, WEAVER + LLM-as-a-Judge Routing,20,0.728
-2,Augmented WEAVER + LLM-as-a-Judge Routing,5,0.880
-3, WEAVER + LLM-as-a-Judge Routing,20,0.455
-3,Augmented WEAVER + LLM-as-a-Judge Routing,10,0.673
+0, WEAVER + LLM-Judge Routing,20,0.906
+0,Augmented WEAVER + LLM-Judge Routing,5,0.969
+1, WEAVER + LLM-Judge Routing,20,0.930
+1,Augmented WEAVER + LLM-Judge Routing,5,0.916
+2, WEAVER + LLM-Judge Routing,20,0.728
+2,Augmented WEAVER + LLM-Judge Routing,5,0.880
+3, WEAVER + LLM-Judge Routing,20,0.455
+3,Augmented WEAVER + LLM-Judge Routing,10,0.673
 
