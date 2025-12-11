@@ -1,0 +1,8 @@
+Difficulty,Type,Num Verifiers,Accuracy
+0,Vanilla WEAVER,20,0.328
+0,Augmented WEAVER,10,0.406
+1,Vanilla WEAVER,20,0.232
+1,Augmented WEAVER,10,0.370
+2,Vanilla WEAVER,20,0.346
+2,Augmented WEAVER,15,0.412
+
