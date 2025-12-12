@@ -11,6 +11,8 @@ import seaborn as sns
 
 def main():
     hub_name = "pnsahoo/GPQA-llama8b-qwen-judge"
+    #hub_name = "pnsahoo/MATH500_llama70b_split_LLM_judge_Meta-Llama-3-8B-Instruct-Lite"
+    # hub_name = "amyguan/math500-k50-80-10-10"
     dev_ds = datasets.load_dataset(f"{hub_name}-dev")["data"]
     val_ds = datasets.load_dataset(f"{hub_name}-val")["data"]
     test_ds = datasets.load_dataset(f"{hub_name}-test")["data"]
