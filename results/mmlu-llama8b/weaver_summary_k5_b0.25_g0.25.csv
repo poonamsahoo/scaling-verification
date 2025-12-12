@@ -1,2 +1,0 @@
-dataset_path,k,alpha,beta,gamma,test_select_accuracy,train_select_accuracy,test_sample_accuracy,train_sample_accuracy,num_verifiers,verifiers,train_file,test_file
-wfang11/mmlu-llama8b-10-10-80-dev,5,1.0,0.25,0.25,0.8450704225352113,0.8450704225352113,0.6939436619718309,0.6939436619718309,5,"QwenPRM_min_scores (7.63B), GRM_GEMMA (2B), QwenPRM_max_scores (7.63B), QwenPRM_avg_scores (7.63B), EurusPRMStage1_max_scores (7.62B)",results/mmlu-llama8b/weaver_train_k5_b0.25_g0.25.csv,results/mmlu-llama8b/weaver_test_k5_b0.25_g0.25.csv

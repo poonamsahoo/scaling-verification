@@ -1,2 +1,0 @@
-dataset_path,k,alpha,beta,gamma,test_select_accuracy,train_select_accuracy,test_sample_accuracy,train_sample_accuracy,num_verifiers,verifiers,train_file,test_file
-wfang11/math500-llama8b-10-10-80-dev,5,1.0,0.5,0.25,0.78,0.78,0.8084,0.8084,5,"QwenPRM_min_scores (7.63B), InternLM2 (7B), EurusPRMStage1_min_scores (7.62B), EurusPRMStage1_max_scores (7.62B), EurusPRMStage1_avg_scores (7.62B)",results/math500-llama8b/weaver_train_k5_b0.5_g0.25.csv,results/math500-llama8b/weaver_test_k5_b0.5_g0.25.csv

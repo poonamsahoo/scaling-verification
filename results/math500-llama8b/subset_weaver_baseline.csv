@@ -1,2 +1,0 @@
-dataset_name,approach,num_verifiers,train_select_accuracy,test_select_accuracy,train_sample_accuracy,test_sample_accuracy,verifiers,model_size
-math500-llama8b,Subsetted Weaver,2,0.48,0.48,0.6406000000000001,0.6406000000000001,"QwenPRM_max_scores, GPM_scores",8B
