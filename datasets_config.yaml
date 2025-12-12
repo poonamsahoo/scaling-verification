@@ -1,0 +1,178 @@
+# Configuration for Multi-Dataset Grid Search
+# All 6 wfang11 datasets with 10-10-80 split
+
+datasets:
+  # MATH500 datasets
+  - name: "math500-llama70b"
+    display_name: "MATH-500 (Llama-70B)"
+    dev: "wfang11/math500-llama70b-10-10-80-dev"
+    val: "wfang11/math500-llama70b-10-10-80-val"
+    test: "wfang11/math500-llama70b-10-10-80-test"
+    model_size: "70B"
+    dataset_type: "MATH-500"
+  
+  - name: "math500-llama8b"
+    display_name: "MATH-500 (Llama-8B)"
+    dev: "wfang11/math500-llama8b-10-10-80-dev"
+    val: "wfang11/math500-llama8b-10-10-80-val"
+    test: "wfang11/math500-llama8b-10-10-80-test"
+    model_size: "8B"
+    dataset_type: "MATH-500"
+  
+  # GPQA datasets
+  - name: "gpqa-llama70b"
+    display_name: "GPQA (Llama-70B)"
+    dev: "wfang11/gpqa-llama70b-10-10-80-dev"
+    val: "wfang11/gpqa-llama70b-10-10-80-val"
+    test: "wfang11/gpqa-llama70b-10-10-80-test"
+    model_size: "70B"
+    dataset_type: "GPQA"
+  
+  - name: "gpqa-llama8b"
+    display_name: "GPQA (Llama-8B)"
+    dev: "wfang11/gpqa-llama8b-10-10-80-dev"
+    val: "wfang11/gpqa-llama8b-10-10-80-val"
+    test: "wfang11/gpqa-llama8b-10-10-80-test"
+    model_size: "8B"
+    dataset_type: "GPQA"
+  
+  # MMLU datasets
+  - name: "mmlu-llama70b"
+    display_name: "MMLU (Llama-70B)"
+    dev: "wfang11/mmlu-llama70b-10-10-80-dev"
+    val: "wfang11/mmlu-llama70b-10-10-80-val"
+    test: "wfang11/mmlu-llama70b-10-10-80-test"
+    model_size: "70B"
+    dataset_type: "MMLU"
+  
+  - name: "mmlu-llama8b"
+    display_name: "MMLU (Llama-8B)"
+    dev: "wfang11/mmlu-llama8b-10-10-80-dev"
+    val: "wfang11/mmlu-llama8b-10-10-80-val"
+    test: "wfang11/mmlu-llama8b-10-10-80-test"
+    model_size: "8B"
+    dataset_type: "MMLU"
+
+# Paper's filtered verifier subsets (from inverse covariance analysis)
+# 70B models include LM judges, 8B models exclude them
+# NOTE: Use column names (not display names) - they get mapped automatically
+verifier_subsets:
+  # MATH-500 subsets (from math500-filtered.yaml / image)
+  math500-llama70b:
+    # LM Judges (7)
+    - "Llama-3.3-70B-Instruct_verdicts"
+    - "Meta-Llama-3.1-405B-Instruct-quantized.w8a16_verdicts"
+    - "Mixtral-8x22B-Instruct-v0.1_verdicts"
+    - "DeepSeekLlama70B_verdicts"
+    - "Qwen/Qwen2.5-72B-Instruct_verdicts"
+    - "DeepSeekQwen32B_verdicts"
+    - "WizardLM-2-8x22B_verdicts"
+    # Reward Models (3)
+    - "QwenPRM_max_scores"
+    - "GPM_scores"
+    - "SkyT1_verdicts"
+  
+  math500-llama8b:
+    # Only reward models available in 8B (no LM judges, no SkyT1 which is judge-like)
+    - "QwenPRM_max_scores"
+    - "GPM_scores"
+  
+  # GPQA subsets (from gpqa-filtered.yaml / image)
+  gpqa-llama70b:
+    # Reward Models (7)
+    - "EurusPRMStage2_min_scores"
+    - "EurusPRMStage2_avg_scores"
+    - "EurusPRMStage1_min_scores"
+    - "GRMLlama32_scores"
+    - "EurusPRMStage1_avg_scores"
+    - "QRM_scores"
+    - "GPM_scores"
+    # LM Judges (8)
+    - "Llama-3.3-70B-Instruct_verdicts"
+    - "Meta-Llama-3.1-405B-Instruct-quantized.w8a16_verdicts"
+    - "Mixtral-8x22B-Instruct-v0.1_verdicts"
+    - "Qwen/Qwen2.5-72B-Instruct_verdicts"
+    - "WizardLM-2-8x22B_verdicts"
+    - "DeepSeekQwen32B_verdicts"
+    - "DeepSeekLlama70B_verdicts"
+    - "SkyT1_verdicts"
+  
+  gpqa-llama8b:
+    # Only reward models (no LM judges for 8B)
+    - "EurusPRMStage2_min_scores"
+    - "EurusPRMStage2_avg_scores"
+    - "EurusPRMStage1_min_scores"
+    - "GRMLlama32_scores"
+    - "EurusPRMStage1_avg_scores"
+    - "QRM_scores"
+    - "GPM_scores"
+  
+  # MMLU-Pro subsets (from mmlu-filtered.yaml / image)
+  mmlu-llama70b:
+    # Reward Models (15) - NOTE: LDLReward is 27B, only in 70B
+    - "LDLRewardGemma_scores"
+    - "EurusPRMStage2_max_scores"
+    - "GRMGemma_scores"
+    - "ArmorRM_scores"
+    - "QwenPRM_min_scores"
+    - "EurusPRMStage1_min_scores"
+    - "GPM_scores"
+    - "QwenPRM_max_scores"
+    - "QwenPRM_avg_scores"
+    - "URM_scores"
+    - "OffsetBias_scores"
+    - "EurusPRMStage2_avg_scores"
+    - "GRMLlama32_scores"
+    - "EurusPRMStage1_avg_scores"
+    - "EurusPRMStage2_min_scores"
+    # LM Judges (7)
+    - "DeepSeekLlama70B_verdicts"
+    - "DeepSeekQwen32B_verdicts"
+    - "WizardLM-2-8x22B_verdicts"
+    - "Qwen/Qwen2.5-72B-Instruct_verdicts"
+    - "Meta-Llama-3.1-405B-Instruct-quantized.w8a16_verdicts"
+    - "SkyT1_verdicts"
+    - "Mixtral-8x22B-Instruct-v0.1_verdicts"
+  
+  mmlu-llama8b:
+    # Only reward models available in 8B (excludes LDLReward 27B)
+    - "EurusPRMStage2_max_scores"
+    - "GRMGemma_scores"
+    - "ArmorRM_scores"
+    - "QwenPRM_min_scores"
+    - "EurusPRMStage1_min_scores"
+    - "GPM_scores"
+    - "QwenPRM_max_scores"
+    - "QwenPRM_avg_scores"
+    - "URM_scores"
+    - "OffsetBias_scores"
+    - "EurusPRMStage2_avg_scores"
+    - "GRMLlama32_scores"
+    - "EurusPRMStage1_avg_scores"
+    - "EurusPRMStage2_min_scores"
+
+# Hyperparameter search space for comprehensive grid search
+hyperparameters:
+  # Verifier selection parameters (Stage 1)
+  k: [5, 10, 15]              # Number of verifiers to select
+  alpha: [1.0]                # Utility weight (fixed, as in Amy's original)
+  beta: [0.25, 0.5, 1.0]      # Similarity penalty weight
+  gamma: [0.25, 0.5, 1.0]     # Cost penalty weight
+
+# WandB configuration
+wandb:
+  entity: "329a"
+  project: "verification"
+  enabled: true
+
+# Execution settings
+execution:
+  resume: true                # Skip already completed datasets
+  log_file: "results/execution_log.txt"
+  save_checkpoints: true      # Save intermediate results
+  
+# Output settings
+output:
+  results_dir: "results"
+  combined_summary: "results/all_datasets_summary.csv"
+  detailed_logs: true
