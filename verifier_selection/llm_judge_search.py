@@ -10,7 +10,8 @@ import seaborn as sns
 # want to run a hyperparameter search for each cluster. that means loading in the dataset, and then filtering to the given cluster_id, and then doing the dev metrics/verifier selection process. and i want all the results to be saved to a single csv file. 
 
 def main():
-    hub_name = "pnsahoo/MATH500_llama70b_split_LLM_judge_Meta-Llama-3-8B-Instruct-Lite"
+    hub_name = "pnsahoo/GPQA-llama8b-qwen-judge"
+    #hub_name = "pnsahoo/MATH500_llama70b_split_LLM_judge_Meta-Llama-3-8B-Instruct-Lite"
     # hub_name = "amyguan/math500-k50-80-10-10"
     dev_ds = datasets.load_dataset(f"{hub_name}-dev")["data"]
     val_ds = datasets.load_dataset(f"{hub_name}-val")["data"]
@@ -25,7 +26,7 @@ def main():
     print(f"Found {len(unique_cluster_ids)} unique clusters: {unique_cluster_ids}")
 
     ### INIT WANDB ###
-    wandb.init(entity="329a", project="llm-judge-augmented-weaver", name="math500-70b-judge-8b-verifier_hparam_search_1percent")
+    wandb.init(entity="329a", project="llm-judge-augmented-weaver", name="GPQA-llama8b-qwen-judge-amended-verifier_hparam_search_10percent")
 
     ### HYPERPARAMETER SEARCH ###
     alpha = 1.0
@@ -131,7 +132,7 @@ def main():
 
     # Log a summary table
     df = pd.DataFrame(results)
-    df.to_csv("results/math500-70b-judge-8b-verifier_hparam_search_results_1percent.csv", index=False)
+    df.to_csv("results/GPQA-llama8b-qwen-judge-amended-verifier_hparam_search_results_10percent.csv", index=False)
     wandb.log({"hparam_results": wandb.Table(dataframe=df)})
 
     wandb.finish()
