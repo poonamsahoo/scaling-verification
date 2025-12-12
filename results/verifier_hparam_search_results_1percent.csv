@@ -1,0 +1,3 @@
+k,alpha,beta,gamma,total_greedy_score,final_step_score,selected_verifiers,selected_param_counts_GB
+10,1.0,1.0,0.5,4.737442903796496,0.2844595380979426,"EurusPRMStage2_max_scores, GPM_scores, LDLRewardGemma_scores, URM_scores, QwenPRM_max_scores, InternLM2Reward7B_scores, SkyT1_verdicts, Qwen72B_scores, DeepSeekLlama70B_verdicts, EurusPRMStage1_avg_scores","7.0, 8.0, 27.0, 8.0, 7.0, 7.0, 32.0, 72.0, 70.0, 7.0"
+10,1.0,1.0,1.0,4.434973767994028,0.21864676115693243,"EurusPRMStage2_max_scores, GPM_scores, LDLRewardGemma_scores, URM_scores, QwenPRM_max_scores, InternLM2Reward7B_scores, EurusPRMStage1_avg_scores, SkyT1_verdicts, Qwen72B_scores, DeepSeekLlama70B_verdicts","7.0, 8.0, 27.0, 8.0, 7.0, 7.0, 7.0, 32.0, 72.0, 70.0"
