@@ -1,0 +1,2 @@
+dataset_name,approach,num_verifiers,train_select_accuracy,test_select_accuracy,train_sample_accuracy,test_sample_accuracy,verifiers,model_size
+gpqa-llama8b,Subsetted Weaver,7,0.34375,0.34375,0.59,0.59,"EurusPRMStage2_min_scores, EurusPRMStage2_avg_scores, EurusPRMStage1_min_scores, GRMLlama32_scores, EurusPRMStage1_avg_scores, QRM_scores, GPM_scores",8B

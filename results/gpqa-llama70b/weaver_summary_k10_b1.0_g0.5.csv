@@ -1,0 +1,2 @@
+dataset_path,k,alpha,beta,gamma,test_select_accuracy,train_select_accuracy,test_sample_accuracy,train_sample_accuracy,num_verifiers,verifiers,train_file,test_file
+wfang11/gpqa-llama70b-10-10-80-dev,10,1.0,1.0,0.5,0.59375,0.59375,0.75953125,0.75953125,10,"OffsetBias (8B), EurusPRMStage1_max_scores (7.62B), QwenPRM_avg_scores (7.63B), GPM (8B), EurusPRMStage2_max_scores (7.62B), URM (8B), DeepSeekQwen (32B), Qwen2.5-72B Instruct, Llama-3.3-70B Instruct, SkyT1 (32B)",results/gpqa-llama70b/weaver_train_k10_b1.0_g0.5.csv,results/gpqa-llama70b/weaver_test_k10_b1.0_g0.5.csv

@@ -1,0 +1,2 @@
+dataset_name,approach,num_verifiers,train_select_accuracy,test_select_accuracy,train_sample_accuracy,test_sample_accuracy,verifiers,model_size
+math500-llama70b,Subsetted Weaver,10,0.94,0.94,0.8644,0.8644,"Llama-3.3-70B-Instruct_verdicts, Meta-Llama-3.1-405B-Instruct-quantized.w8a16_verdicts, Mixtral-8x22B-Instruct-v0.1_verdicts, DeepSeekLlama70B_verdicts, Qwen/Qwen2.5-72B-Instruct_verdicts, DeepSeekQwen32B_verdicts, WizardLM-2-8x22B_verdicts, QwenPRM_max_scores, GPM_scores, SkyT1_verdicts",70B

@@ -1,0 +1,894 @@
+[2025-12-09 17:06:27] 
+################################################################################
+[2025-12-09 17:06:27] # MULTI-DATASET GRID SEARCH
+[2025-12-09 17:06:27] # Total datasets: 6
+[2025-12-09 17:06:27] # Config: datasets_config.yaml
+[2025-12-09 17:06:27] ################################################################################
+
+[2025-12-09 17:06:27] 
+################################################################################
+[2025-12-09 17:06:27] # PROCESSING DATASET: math500-llama70b
+[2025-12-09 17:06:27] # MATH-500 (Llama-70B)
+[2025-12-09 17:06:27] ################################################################################
+[2025-12-09 17:06:27] 
+================================================================================
+[2025-12-09 17:06:27] STAGE 1: Verifier Selection - math500-llama70b
+[2025-12-09 17:06:27] ================================================================================
+[2025-12-09 17:06:41] ✅ Stage 1 complete for math500-llama70b
+[2025-12-09 17:06:41]    Results: results/math500-llama70b/verifier_selection_results.csv
+[2025-12-09 17:06:41] 
+================================================================================
+[2025-12-09 17:06:41] STAGE 2: Weaver Evaluation - math500-llama70b
+[2025-12-09 17:06:41] ================================================================================
+[2025-12-09 17:06:41] 
+  Configuration 1/27: k=5, β=0.25, γ=0.25
+[2025-12-09 17:06:41]   Using 5 verifiers
+[2025-12-09 17:06:44]   ✅ Complete: Test Acc = 0.920
+[2025-12-09 17:06:44] 
+  Configuration 2/27: k=5, β=0.25, γ=0.5
+[2025-12-09 17:06:44]   Using 5 verifiers
+[2025-12-09 17:06:48]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:06:48] 
+  Configuration 3/27: k=5, β=0.25, γ=1.0
+[2025-12-09 17:06:48]   Using 5 verifiers
+[2025-12-09 17:06:51]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:06:51] 
+  Configuration 4/27: k=5, β=0.5, γ=0.25
+[2025-12-09 17:06:51]   Using 5 verifiers
+[2025-12-09 17:06:54]   ✅ Complete: Test Acc = 0.920
+[2025-12-09 17:06:54] 
+  Configuration 5/27: k=5, β=0.5, γ=0.5
+[2025-12-09 17:06:54]   Using 5 verifiers
+[2025-12-09 17:06:56]   ✅ Complete: Test Acc = 0.920
+[2025-12-09 17:06:56] 
+  Configuration 6/27: k=5, β=0.5, γ=1.0
+[2025-12-09 17:06:56]   Using 5 verifiers
+[2025-12-09 17:06:59]   ✅ Complete: Test Acc = 0.920
+[2025-12-09 17:06:59] 
+  Configuration 7/27: k=5, β=1.0, γ=0.25
+[2025-12-09 17:06:59]   Using 5 verifiers
+[2025-12-09 17:07:03]   ✅ Complete: Test Acc = 0.920
+[2025-12-09 17:07:03] 
+  Configuration 8/27: k=5, β=1.0, γ=0.5
+[2025-12-09 17:07:03]   Using 5 verifiers
+[2025-12-09 17:07:05]   ✅ Complete: Test Acc = 0.920
+[2025-12-09 17:07:05] 
+  Configuration 9/27: k=5, β=1.0, γ=1.0
+[2025-12-09 17:07:05]   Using 5 verifiers
+[2025-12-09 17:07:08]   ✅ Complete: Test Acc = 0.920
+[2025-12-09 17:07:08] 
+  Configuration 10/27: k=10, β=0.25, γ=0.25
+[2025-12-09 17:07:08]   Using 10 verifiers
+[2025-12-09 17:07:11]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:11] 
+  Configuration 11/27: k=10, β=0.25, γ=0.5
+[2025-12-09 17:07:11]   Using 10 verifiers
+[2025-12-09 17:07:14]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:14] 
+  Configuration 12/27: k=10, β=0.25, γ=1.0
+[2025-12-09 17:07:14]   Using 10 verifiers
+[2025-12-09 17:07:17]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:17] 
+  Configuration 13/27: k=10, β=0.5, γ=0.25
+[2025-12-09 17:07:17]   Using 10 verifiers
+[2025-12-09 17:07:20]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:20] 
+  Configuration 14/27: k=10, β=0.5, γ=0.5
+[2025-12-09 17:07:20]   Using 10 verifiers
+[2025-12-09 17:07:23]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:23] 
+  Configuration 15/27: k=10, β=0.5, γ=1.0
+[2025-12-09 17:07:23]   Using 10 verifiers
+[2025-12-09 17:07:26]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:26] 
+  Configuration 16/27: k=10, β=1.0, γ=0.25
+[2025-12-09 17:07:26]   Using 10 verifiers
+[2025-12-09 17:07:28]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:28] 
+  Configuration 17/27: k=10, β=1.0, γ=0.5
+[2025-12-09 17:07:28]   Using 10 verifiers
+[2025-12-09 17:07:31]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:31] 
+  Configuration 18/27: k=10, β=1.0, γ=1.0
+[2025-12-09 17:07:31]   Using 10 verifiers
+[2025-12-09 17:07:34]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:34] 
+  Configuration 19/27: k=15, β=0.25, γ=0.25
+[2025-12-09 17:07:34]   Using 15 verifiers
+[2025-12-09 17:07:38]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:38] 
+  Configuration 20/27: k=15, β=0.25, γ=0.5
+[2025-12-09 17:07:38]   Using 15 verifiers
+[2025-12-09 17:07:41]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:41] 
+  Configuration 21/27: k=15, β=0.25, γ=1.0
+[2025-12-09 17:07:41]   Using 15 verifiers
+[2025-12-09 17:07:44]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:44] 
+  Configuration 22/27: k=15, β=0.5, γ=0.25
+[2025-12-09 17:07:44]   Using 15 verifiers
+[2025-12-09 17:07:47]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:47] 
+  Configuration 23/27: k=15, β=0.5, γ=0.5
+[2025-12-09 17:07:47]   Using 15 verifiers
+[2025-12-09 17:07:50]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:50] 
+  Configuration 24/27: k=15, β=0.5, γ=1.0
+[2025-12-09 17:07:50]   Using 15 verifiers
+[2025-12-09 17:07:54]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:54] 
+  Configuration 25/27: k=15, β=1.0, γ=0.25
+[2025-12-09 17:07:54]   Using 15 verifiers
+[2025-12-09 17:07:57]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:07:57] 
+  Configuration 26/27: k=15, β=1.0, γ=0.5
+[2025-12-09 17:07:57]   Using 15 verifiers
+[2025-12-09 17:08:00]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:08:00] 
+  Configuration 27/27: k=15, β=1.0, γ=1.0
+[2025-12-09 17:08:00]   Using 15 verifiers
+[2025-12-09 17:08:04]   ✅ Complete: Test Acc = 0.940
+[2025-12-09 17:08:04] ✅ Stage 2 complete for math500-llama70b
+[2025-12-09 17:08:04]    Summary: results/math500-llama70b/weaver_all_configs_summary.csv
+[2025-12-09 17:08:04] COMPLETED: math500-llama70b
+[2025-12-09 17:08:04] 
+################################################################################
+[2025-12-09 17:08:04] # PROCESSING DATASET: math500-llama8b
+[2025-12-09 17:08:04] # MATH-500 (Llama-8B)
+[2025-12-09 17:08:04] ################################################################################
+[2025-12-09 17:08:04] 
+================================================================================
+[2025-12-09 17:08:04] STAGE 1: Verifier Selection - math500-llama8b
+[2025-12-09 17:08:04] ================================================================================
+[2025-12-09 17:08:14] ✅ Stage 1 complete for math500-llama8b
+[2025-12-09 17:08:14]    Results: results/math500-llama8b/verifier_selection_results.csv
+[2025-12-09 17:08:14] 
+================================================================================
+[2025-12-09 17:08:14] STAGE 2: Weaver Evaluation - math500-llama8b
+[2025-12-09 17:08:14] ================================================================================
+[2025-12-09 17:08:14] 
+  Configuration 1/27: k=5, β=0.25, γ=0.25
+[2025-12-09 17:08:14]   Using 5 verifiers
+[2025-12-09 17:08:17]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:08:17] 
+  Configuration 2/27: k=5, β=0.25, γ=0.5
+[2025-12-09 17:08:17]   Using 5 verifiers
+[2025-12-09 17:08:20]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:08:20] 
+  Configuration 3/27: k=5, β=0.25, γ=1.0
+[2025-12-09 17:08:20]   Using 5 verifiers
+[2025-12-09 17:08:23]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:08:23] 
+  Configuration 4/27: k=5, β=0.5, γ=0.25
+[2025-12-09 17:08:23]   Using 5 verifiers
+[2025-12-09 17:08:26]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:08:26] 
+  Configuration 5/27: k=5, β=0.5, γ=0.5
+[2025-12-09 17:08:26]   Using 5 verifiers
+[2025-12-09 17:08:30]   ✅ Complete: Test Acc = 0.840
+[2025-12-09 17:08:30] 
+  Configuration 6/27: k=5, β=0.5, γ=1.0
+[2025-12-09 17:08:30]   Using 5 verifiers
+[2025-12-09 17:08:32]   ✅ Complete: Test Acc = 0.840
+[2025-12-09 17:08:32] 
+  Configuration 7/27: k=5, β=1.0, γ=0.25
+[2025-12-09 17:08:32]   Using 5 verifiers
+[2025-12-09 17:08:35]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:08:35] 
+  Configuration 8/27: k=5, β=1.0, γ=0.5
+[2025-12-09 17:08:35]   Using 5 verifiers
+[2025-12-09 17:08:37]   ✅ Complete: Test Acc = 0.740
+[2025-12-09 17:08:37] 
+  Configuration 9/27: k=5, β=1.0, γ=1.0
+[2025-12-09 17:08:37]   Using 5 verifiers
+[2025-12-09 17:08:40]   ✅ Complete: Test Acc = 0.740
+[2025-12-09 17:08:40] 
+  Configuration 10/27: k=10, β=0.25, γ=0.25
+[2025-12-09 17:08:40]   Using 10 verifiers
+[2025-12-09 17:08:43]   ✅ Complete: Test Acc = 0.760
+[2025-12-09 17:08:43] 
+  Configuration 11/27: k=10, β=0.25, γ=0.5
+[2025-12-09 17:08:43]   Using 10 verifiers
+[2025-12-09 17:08:46]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:08:46] 
+  Configuration 12/27: k=10, β=0.25, γ=1.0
+[2025-12-09 17:08:46]   Using 10 verifiers
+[2025-12-09 17:08:49]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:08:49] 
+  Configuration 13/27: k=10, β=0.5, γ=0.25
+[2025-12-09 17:08:49]   Using 10 verifiers
+[2025-12-09 17:08:52]   ✅ Complete: Test Acc = 0.760
+[2025-12-09 17:08:52] 
+  Configuration 14/27: k=10, β=0.5, γ=0.5
+[2025-12-09 17:08:52]   Using 10 verifiers
+[2025-12-09 17:08:55]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:08:55] 
+  Configuration 15/27: k=10, β=0.5, γ=1.0
+[2025-12-09 17:08:55]   Using 10 verifiers
+[2025-12-09 17:08:58]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:08:58] 
+  Configuration 16/27: k=10, β=1.0, γ=0.25
+[2025-12-09 17:08:58]   Using 10 verifiers
+[2025-12-09 17:09:05]   ✅ Complete: Test Acc = 0.760
+[2025-12-09 17:09:05] 
+  Configuration 17/27: k=10, β=1.0, γ=0.5
+[2025-12-09 17:09:05]   Using 10 verifiers
+[2025-12-09 17:09:10]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:10] 
+  Configuration 18/27: k=10, β=1.0, γ=1.0
+[2025-12-09 17:09:10]   Using 10 verifiers
+[2025-12-09 17:09:14]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:14] 
+  Configuration 19/27: k=15, β=0.25, γ=0.25
+[2025-12-09 17:09:14]   Using 15 verifiers
+[2025-12-09 17:09:21]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:21] 
+  Configuration 20/27: k=15, β=0.25, γ=0.5
+[2025-12-09 17:09:21]   Using 15 verifiers
+[2025-12-09 17:09:25]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:25] 
+  Configuration 21/27: k=15, β=0.25, γ=1.0
+[2025-12-09 17:09:25]   Using 15 verifiers
+[2025-12-09 17:09:29]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:29] 
+  Configuration 22/27: k=15, β=0.5, γ=0.25
+[2025-12-09 17:09:29]   Using 15 verifiers
+[2025-12-09 17:09:32]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:32] 
+  Configuration 23/27: k=15, β=0.5, γ=0.5
+[2025-12-09 17:09:32]   Using 15 verifiers
+[2025-12-09 17:09:36]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:36] 
+  Configuration 24/27: k=15, β=0.5, γ=1.0
+[2025-12-09 17:09:36]   Using 15 verifiers
+[2025-12-09 17:09:39]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:39] 
+  Configuration 25/27: k=15, β=1.0, γ=0.25
+[2025-12-09 17:09:39]   Using 15 verifiers
+[2025-12-09 17:09:43]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:43] 
+  Configuration 26/27: k=15, β=1.0, γ=0.5
+[2025-12-09 17:09:43]   Using 15 verifiers
+[2025-12-09 17:09:45]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:45] 
+  Configuration 27/27: k=15, β=1.0, γ=1.0
+[2025-12-09 17:09:45]   Using 15 verifiers
+[2025-12-09 17:09:48]   ✅ Complete: Test Acc = 0.780
+[2025-12-09 17:09:48] ✅ Stage 2 complete for math500-llama8b
+[2025-12-09 17:09:48]    Summary: results/math500-llama8b/weaver_all_configs_summary.csv
+[2025-12-09 17:09:48] COMPLETED: math500-llama8b
+[2025-12-09 17:09:48] 
+################################################################################
+[2025-12-09 17:09:48] # PROCESSING DATASET: gpqa-llama70b
+[2025-12-09 17:09:48] # GPQA (Llama-70B)
+[2025-12-09 17:09:48] ################################################################################
+[2025-12-09 17:09:48] 
+================================================================================
+[2025-12-09 17:09:48] STAGE 1: Verifier Selection - gpqa-llama70b
+[2025-12-09 17:09:48] ================================================================================
+[2025-12-09 17:10:00] ✅ Stage 1 complete for gpqa-llama70b
+[2025-12-09 17:10:00]    Results: results/gpqa-llama70b/verifier_selection_results.csv
+[2025-12-09 17:10:00] 
+================================================================================
+[2025-12-09 17:10:00] STAGE 2: Weaver Evaluation - gpqa-llama70b
+[2025-12-09 17:10:00] ================================================================================
+[2025-12-09 17:10:00] 
+  Configuration 1/27: k=5, β=0.25, γ=0.25
+[2025-12-09 17:10:00]   Using 5 verifiers
+[2025-12-09 17:10:03]   ✅ Complete: Test Acc = 0.531
+[2025-12-09 17:10:03] 
+  Configuration 2/27: k=5, β=0.25, γ=0.5
+[2025-12-09 17:10:03]   Using 5 verifiers
+[2025-12-09 17:10:06]   ✅ Complete: Test Acc = 0.500
+[2025-12-09 17:10:06] 
+  Configuration 3/27: k=5, β=0.25, γ=1.0
+[2025-12-09 17:10:06]   Using 5 verifiers
+[2025-12-09 17:10:11]   ✅ Complete: Test Acc = 0.500
+[2025-12-09 17:10:11] 
+  Configuration 4/27: k=5, β=0.5, γ=0.25
+[2025-12-09 17:10:11]   Using 5 verifiers
+[2025-12-09 17:10:16]   ✅ Complete: Test Acc = 0.562
+[2025-12-09 17:10:16] 
+  Configuration 5/27: k=5, β=0.5, γ=0.5
+[2025-12-09 17:10:16]   Using 5 verifiers
+[2025-12-09 17:10:20]   ✅ Complete: Test Acc = 0.562
+[2025-12-09 17:10:20] 
+  Configuration 6/27: k=5, β=0.5, γ=1.0
+[2025-12-09 17:10:20]   Using 5 verifiers
+[2025-12-09 17:10:25]   ✅ Complete: Test Acc = 0.500
+[2025-12-09 17:10:25] 
+  Configuration 7/27: k=5, β=1.0, γ=0.25
+[2025-12-09 17:10:25]   Using 5 verifiers
+[2025-12-09 17:10:28]   ✅ Complete: Test Acc = 0.359
+[2025-12-09 17:10:28] 
+  Configuration 8/27: k=5, β=1.0, γ=0.5
+[2025-12-09 17:10:28]   Using 5 verifiers
+[2025-12-09 17:10:32]   ✅ Complete: Test Acc = 0.359
+[2025-12-09 17:10:32] 
+  Configuration 9/27: k=5, β=1.0, γ=1.0
+[2025-12-09 17:10:32]   Using 5 verifiers
+[2025-12-09 17:10:35]   ✅ Complete: Test Acc = 0.359
+[2025-12-09 17:10:35] 
+  Configuration 10/27: k=10, β=0.25, γ=0.25
+[2025-12-09 17:10:35]   Using 10 verifiers
+[2025-12-09 17:10:38]   ✅ Complete: Test Acc = 0.531
+[2025-12-09 17:10:38] 
+  Configuration 11/27: k=10, β=0.25, γ=0.5
+[2025-12-09 17:10:38]   Using 10 verifiers
+[2025-12-09 17:10:41]   ✅ Complete: Test Acc = 0.531
+[2025-12-09 17:10:41] 
+  Configuration 12/27: k=10, β=0.25, γ=1.0
+[2025-12-09 17:10:41]   Using 10 verifiers
+[2025-12-09 17:10:44]   ✅ Complete: Test Acc = 0.562
+[2025-12-09 17:10:44] 
+  Configuration 13/27: k=10, β=0.5, γ=0.25
+[2025-12-09 17:10:44]   Using 10 verifiers
+[2025-12-09 17:10:47]   ✅ Complete: Test Acc = 0.625
+[2025-12-09 17:10:47] 
+  Configuration 14/27: k=10, β=0.5, γ=0.5
+[2025-12-09 17:10:47]   Using 10 verifiers
+[2025-12-09 17:10:50]   ✅ Complete: Test Acc = 0.625
+[2025-12-09 17:10:50] 
+  Configuration 15/27: k=10, β=0.5, γ=1.0
+[2025-12-09 17:10:50]   Using 10 verifiers
+[2025-12-09 17:10:53]   ✅ Complete: Test Acc = 0.562
+[2025-12-09 17:10:53] 
+  Configuration 16/27: k=10, β=1.0, γ=0.25
+[2025-12-09 17:10:53]   Using 10 verifiers
+[2025-12-09 17:10:55]   ✅ Complete: Test Acc = 0.594
+[2025-12-09 17:10:55] 
+  Configuration 17/27: k=10, β=1.0, γ=0.5
+[2025-12-09 17:10:55]   Using 10 verifiers
+[2025-12-09 17:10:58]   ✅ Complete: Test Acc = 0.594
+[2025-12-09 17:10:58] 
+  Configuration 18/27: k=10, β=1.0, γ=1.0
+[2025-12-09 17:10:58]   Using 10 verifiers
+[2025-12-09 17:11:01]   ✅ Complete: Test Acc = 0.625
+[2025-12-09 17:11:01] 
+  Configuration 19/27: k=15, β=0.25, γ=0.25
+[2025-12-09 17:11:01]   Using 15 verifiers
+[2025-12-09 17:11:04]   ✅ Complete: Test Acc = 0.625
+[2025-12-09 17:11:04] 
+  Configuration 20/27: k=15, β=0.25, γ=0.5
+[2025-12-09 17:11:04]   Using 15 verifiers
+[2025-12-09 17:11:07]   ✅ Complete: Test Acc = 0.578
+[2025-12-09 17:11:07] 
+  Configuration 21/27: k=15, β=0.25, γ=1.0
+[2025-12-09 17:11:07]   Using 15 verifiers
+[2025-12-09 17:11:09]   ✅ Complete: Test Acc = 0.562
+[2025-12-09 17:11:09] 
+  Configuration 22/27: k=15, β=0.5, γ=0.25
+[2025-12-09 17:11:09]   Using 15 verifiers
+[2025-12-09 17:11:12]   ✅ Complete: Test Acc = 0.641
+[2025-12-09 17:11:12] 
+  Configuration 23/27: k=15, β=0.5, γ=0.5
+[2025-12-09 17:11:12]   Using 15 verifiers
+[2025-12-09 17:11:15]   ✅ Complete: Test Acc = 0.641
+[2025-12-09 17:11:15] 
+  Configuration 24/27: k=15, β=0.5, γ=1.0
+[2025-12-09 17:11:15]   Using 15 verifiers
+[2025-12-09 17:11:18]   ✅ Complete: Test Acc = 0.656
+[2025-12-09 17:11:18] 
+  Configuration 25/27: k=15, β=1.0, γ=0.25
+[2025-12-09 17:11:18]   Using 15 verifiers
+[2025-12-09 17:11:21]   ✅ Complete: Test Acc = 0.641
+[2025-12-09 17:11:21] 
+  Configuration 26/27: k=15, β=1.0, γ=0.5
+[2025-12-09 17:11:21]   Using 15 verifiers
+[2025-12-09 17:11:24]   ✅ Complete: Test Acc = 0.641
+[2025-12-09 17:11:24] 
+  Configuration 27/27: k=15, β=1.0, γ=1.0
+[2025-12-09 17:11:24]   Using 15 verifiers
+[2025-12-09 17:11:27]   ✅ Complete: Test Acc = 0.641
+[2025-12-09 17:11:27] ✅ Stage 2 complete for gpqa-llama70b
+[2025-12-09 17:11:27]    Summary: results/gpqa-llama70b/weaver_all_configs_summary.csv
+[2025-12-09 17:11:27] COMPLETED: gpqa-llama70b
+[2025-12-09 17:11:27] 
+################################################################################
+[2025-12-09 17:11:27] # PROCESSING DATASET: gpqa-llama8b
+[2025-12-09 17:11:27] # GPQA (Llama-8B)
+[2025-12-09 17:11:27] ################################################################################
+[2025-12-09 17:11:27] 
+================================================================================
+[2025-12-09 17:11:27] STAGE 1: Verifier Selection - gpqa-llama8b
+[2025-12-09 17:11:27] ================================================================================
+[2025-12-09 17:11:37] ✅ Stage 1 complete for gpqa-llama8b
+[2025-12-09 17:11:37]    Results: results/gpqa-llama8b/verifier_selection_results.csv
+[2025-12-09 17:11:37] 
+================================================================================
+[2025-12-09 17:11:37] STAGE 2: Weaver Evaluation - gpqa-llama8b
+[2025-12-09 17:11:37] ================================================================================
+[2025-12-09 17:11:37] 
+  Configuration 1/27: k=5, β=0.25, γ=0.25
+[2025-12-09 17:11:37]   Using 5 verifiers
+[2025-12-09 17:11:39]   ❌ FAILED for config k=5, β=0.25, γ=0.25: tuple index out of range
+[2025-12-09 17:11:39]      Traceback: Traceback (most recent call last):
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1104, in _drop_deps
+    selected_inv_cov = np.linalg.inv(selected_cov)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/weaver/lib/python3.11/site-packages/numpy/linalg/_linalg.py", line 602, in inv
+    _assert_stacked_2d(a)
+  File "/opt/anaconda3/envs/weaver/lib/python3.11/site-packages/numpy/linalg/_linalg.py", line 195, in _assert_stacked_2d
+    raise LinAlgError('%d-dimensional array given. Array must be '
+numpy.linalg.LinAlgError: 0-dimensional array given. Array must be at least two-dimensional
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/williamfang/cs3291/scaling-verification/run_all_datasets_grid_search.py", line 156, in run_stage2_weaver_evaluation
+    df_train, df_test, summary_path = run_weaver_evaluation(
+                                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/selection/run_weaver_evaluation.py", line 220, in run_weaver_evaluation
+    df_train, df_test = train_and_evaluate(data, model, args.fit_cfg)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/selection/run.py", line 194, in train_and_evaluate
+    model.fit(X_train, y_train)
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 216, in fit
+    model.fit(X, y, **kwargs)
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1324, in fit
+    _, remaining_idxs = self._drop_deps(X, y, current_verifiers=balanced_names if self.drop_imbalanced_verifiers is not None else self.verifier_names)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1106, in _drop_deps
+    selected_cov = selected_cov + 1e-6 * np.eye(selected_cov.shape[0]) # add small value to diagonal to make it invertible
+                                                ~~~~~~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+
+[2025-12-09 17:11:39] 
+  Configuration 2/27: k=5, β=0.25, γ=0.5
+[2025-12-09 17:11:39]   Using 5 verifiers
+[2025-12-09 17:11:39]   ❌ FAILED for config k=5, β=0.25, γ=0.5: tuple index out of range
+[2025-12-09 17:11:39]      Traceback: Traceback (most recent call last):
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1104, in _drop_deps
+    selected_inv_cov = np.linalg.inv(selected_cov)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/weaver/lib/python3.11/site-packages/numpy/linalg/_linalg.py", line 602, in inv
+    _assert_stacked_2d(a)
+  File "/opt/anaconda3/envs/weaver/lib/python3.11/site-packages/numpy/linalg/_linalg.py", line 195, in _assert_stacked_2d
+    raise LinAlgError('%d-dimensional array given. Array must be '
+numpy.linalg.LinAlgError: 0-dimensional array given. Array must be at least two-dimensional
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/williamfang/cs3291/scaling-verification/run_all_datasets_grid_search.py", line 156, in run_stage2_weaver_evaluation
+    df_train, df_test, summary_path = run_weaver_evaluation(
+                                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/selection/run_weaver_evaluation.py", line 220, in run_weaver_evaluation
+    df_train, df_test = train_and_evaluate(data, model, args.fit_cfg)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/selection/run.py", line 194, in train_and_evaluate
+    model.fit(X_train, y_train)
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 216, in fit
+    model.fit(X, y, **kwargs)
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1324, in fit
+    _, remaining_idxs = self._drop_deps(X, y, current_verifiers=balanced_names if self.drop_imbalanced_verifiers is not None else self.verifier_names)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1106, in _drop_deps
+    selected_cov = selected_cov + 1e-6 * np.eye(selected_cov.shape[0]) # add small value to diagonal to make it invertible
+                                                ~~~~~~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+
+[2025-12-09 17:11:39] 
+  Configuration 3/27: k=5, β=0.25, γ=1.0
+[2025-12-09 17:11:39]   Using 5 verifiers
+[2025-12-09 17:11:40]   ❌ FAILED for config k=5, β=0.25, γ=1.0: tuple index out of range
+[2025-12-09 17:11:40]      Traceback: Traceback (most recent call last):
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1104, in _drop_deps
+    selected_inv_cov = np.linalg.inv(selected_cov)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/weaver/lib/python3.11/site-packages/numpy/linalg/_linalg.py", line 602, in inv
+    _assert_stacked_2d(a)
+  File "/opt/anaconda3/envs/weaver/lib/python3.11/site-packages/numpy/linalg/_linalg.py", line 195, in _assert_stacked_2d
+    raise LinAlgError('%d-dimensional array given. Array must be '
+numpy.linalg.LinAlgError: 0-dimensional array given. Array must be at least two-dimensional
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/williamfang/cs3291/scaling-verification/run_all_datasets_grid_search.py", line 156, in run_stage2_weaver_evaluation
+    df_train, df_test, summary_path = run_weaver_evaluation(
+                                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/selection/run_weaver_evaluation.py", line 220, in run_weaver_evaluation
+    df_train, df_test = train_and_evaluate(data, model, args.fit_cfg)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/selection/run.py", line 194, in train_and_evaluate
+    model.fit(X_train, y_train)
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 216, in fit
+    model.fit(X, y, **kwargs)
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1324, in fit
+    _, remaining_idxs = self._drop_deps(X, y, current_verifiers=balanced_names if self.drop_imbalanced_verifiers is not None else self.verifier_names)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1106, in _drop_deps
+    selected_cov = selected_cov + 1e-6 * np.eye(selected_cov.shape[0]) # add small value to diagonal to make it invertible
+                                                ~~~~~~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+
+[2025-12-09 17:11:40] 
+  Configuration 4/27: k=5, β=0.5, γ=0.25
+[2025-12-09 17:11:40]   Using 5 verifiers
+[2025-12-09 17:11:43]   ✅ Complete: Test Acc = 0.281
+[2025-12-09 17:11:43] 
+  Configuration 5/27: k=5, β=0.5, γ=0.5
+[2025-12-09 17:11:43]   Using 5 verifiers
+[2025-12-09 17:11:46]   ✅ Complete: Test Acc = 0.281
+[2025-12-09 17:11:46] 
+  Configuration 6/27: k=5, β=0.5, γ=1.0
+[2025-12-09 17:11:46]   Using 5 verifiers
+[2025-12-09 17:11:47]   ❌ FAILED for config k=5, β=0.5, γ=1.0: tuple index out of range
+[2025-12-09 17:11:47]      Traceback: Traceback (most recent call last):
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1104, in _drop_deps
+    selected_inv_cov = np.linalg.inv(selected_cov)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/weaver/lib/python3.11/site-packages/numpy/linalg/_linalg.py", line 602, in inv
+    _assert_stacked_2d(a)
+  File "/opt/anaconda3/envs/weaver/lib/python3.11/site-packages/numpy/linalg/_linalg.py", line 195, in _assert_stacked_2d
+    raise LinAlgError('%d-dimensional array given. Array must be '
+numpy.linalg.LinAlgError: 0-dimensional array given. Array must be at least two-dimensional
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/williamfang/cs3291/scaling-verification/run_all_datasets_grid_search.py", line 156, in run_stage2_weaver_evaluation
+    df_train, df_test, summary_path = run_weaver_evaluation(
+                                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/selection/run_weaver_evaluation.py", line 220, in run_weaver_evaluation
+    df_train, df_test = train_and_evaluate(data, model, args.fit_cfg)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/selection/run.py", line 194, in train_and_evaluate
+    model.fit(X_train, y_train)
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 216, in fit
+    model.fit(X, y, **kwargs)
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1324, in fit
+    _, remaining_idxs = self._drop_deps(X, y, current_verifiers=balanced_names if self.drop_imbalanced_verifiers is not None else self.verifier_names)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamfang/cs3291/scaling-verification/weaver/models.py", line 1106, in _drop_deps
+    selected_cov = selected_cov + 1e-6 * np.eye(selected_cov.shape[0]) # add small value to diagonal to make it invertible
+                                                ~~~~~~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+
+[2025-12-09 17:11:47] 
+  Configuration 7/27: k=5, β=1.0, γ=0.25
+[2025-12-09 17:11:47]   Using 5 verifiers
+[2025-12-09 17:11:49]   ✅ Complete: Test Acc = 0.297
+[2025-12-09 17:11:49] 
+  Configuration 8/27: k=5, β=1.0, γ=0.5
+[2025-12-09 17:11:50]   Using 5 verifiers
+[2025-12-09 17:11:53]   ✅ Complete: Test Acc = 0.297
+[2025-12-09 17:11:53] 
+  Configuration 9/27: k=5, β=1.0, γ=1.0
+[2025-12-09 17:11:53]   Using 5 verifiers
+[2025-12-09 17:11:55]   ✅ Complete: Test Acc = 0.297
+[2025-12-09 17:11:55] 
+  Configuration 10/27: k=10, β=0.25, γ=0.25
+[2025-12-09 17:11:55]   Using 10 verifiers
+[2025-12-09 17:11:59]   ✅ Complete: Test Acc = 0.359
+[2025-12-09 17:11:59] 
+  Configuration 11/27: k=10, β=0.25, γ=0.5
+[2025-12-09 17:11:59]   Using 10 verifiers
+[2025-12-09 17:12:01]   ✅ Complete: Test Acc = 0.359
+[2025-12-09 17:12:01] 
+  Configuration 12/27: k=10, β=0.25, γ=1.0
+[2025-12-09 17:12:01]   Using 10 verifiers
+[2025-12-09 17:12:04]   ✅ Complete: Test Acc = 0.297
+[2025-12-09 17:12:04] 
+  Configuration 13/27: k=10, β=0.5, γ=0.25
+[2025-12-09 17:12:04]   Using 10 verifiers
+[2025-12-09 17:12:08]   ✅ Complete: Test Acc = 0.328
+[2025-12-09 17:12:08] 
+  Configuration 14/27: k=10, β=0.5, γ=0.5
+[2025-12-09 17:12:08]   Using 10 verifiers
+[2025-12-09 17:12:10]   ✅ Complete: Test Acc = 0.328
+[2025-12-09 17:12:10] 
+  Configuration 15/27: k=10, β=0.5, γ=1.0
+[2025-12-09 17:12:10]   Using 10 verifiers
+[2025-12-09 17:12:13]   ✅ Complete: Test Acc = 0.328
+[2025-12-09 17:12:13] 
+  Configuration 16/27: k=10, β=1.0, γ=0.25
+[2025-12-09 17:12:13]   Using 10 verifiers
+[2025-12-09 17:12:16]   ✅ Complete: Test Acc = 0.344
+[2025-12-09 17:12:16] 
+  Configuration 17/27: k=10, β=1.0, γ=0.5
+[2025-12-09 17:12:16]   Using 10 verifiers
+[2025-12-09 17:12:19]   ✅ Complete: Test Acc = 0.344
+[2025-12-09 17:12:19] 
+  Configuration 18/27: k=10, β=1.0, γ=1.0
+[2025-12-09 17:12:19]   Using 10 verifiers
+[2025-12-09 17:12:22]   ✅ Complete: Test Acc = 0.344
+[2025-12-09 17:12:22] 
+  Configuration 19/27: k=15, β=0.25, γ=0.25
+[2025-12-09 17:12:22]   Using 15 verifiers
+[2025-12-09 17:12:25]   ✅ Complete: Test Acc = 0.312
+[2025-12-09 17:12:25] 
+  Configuration 20/27: k=15, β=0.25, γ=0.5
+[2025-12-09 17:12:25]   Using 15 verifiers
+[2025-12-09 17:12:28]   ✅ Complete: Test Acc = 0.312
+[2025-12-09 17:12:28] 
+  Configuration 21/27: k=15, β=0.25, γ=1.0
+[2025-12-09 17:12:28]   Using 15 verifiers
+[2025-12-09 17:12:31]   ✅ Complete: Test Acc = 0.312
+[2025-12-09 17:12:31] 
+  Configuration 22/27: k=15, β=0.5, γ=0.25
+[2025-12-09 17:12:31]   Using 15 verifiers
+[2025-12-09 17:12:33]   ✅ Complete: Test Acc = 0.312
+[2025-12-09 17:12:33] 
+  Configuration 23/27: k=15, β=0.5, γ=0.5
+[2025-12-09 17:12:33]   Using 15 verifiers
+[2025-12-09 17:12:36]   ✅ Complete: Test Acc = 0.312
+[2025-12-09 17:12:36] 
+  Configuration 24/27: k=15, β=0.5, γ=1.0
+[2025-12-09 17:12:36]   Using 15 verifiers
+[2025-12-09 17:12:39]   ✅ Complete: Test Acc = 0.312
+[2025-12-09 17:12:39] 
+  Configuration 25/27: k=15, β=1.0, γ=0.25
+[2025-12-09 17:12:39]   Using 15 verifiers
+[2025-12-09 17:12:42]   ✅ Complete: Test Acc = 0.312
+[2025-12-09 17:12:42] 
+  Configuration 26/27: k=15, β=1.0, γ=0.5
+[2025-12-09 17:12:42]   Using 15 verifiers
+[2025-12-09 17:12:45]   ✅ Complete: Test Acc = 0.312
+[2025-12-09 17:12:45] 
+  Configuration 27/27: k=15, β=1.0, γ=1.0
+[2025-12-09 17:12:45]   Using 15 verifiers
+[2025-12-09 17:12:48]   ✅ Complete: Test Acc = 0.312
+[2025-12-09 17:12:48] ✅ Stage 2 complete for gpqa-llama8b
+[2025-12-09 17:12:48]    Summary: results/gpqa-llama8b/weaver_all_configs_summary.csv
+[2025-12-09 17:12:48] COMPLETED: gpqa-llama8b
+[2025-12-09 17:12:48] 
+################################################################################
+[2025-12-09 17:12:48] # PROCESSING DATASET: mmlu-llama70b
+[2025-12-09 17:12:48] # MMLU (Llama-70B)
+[2025-12-09 17:12:48] ################################################################################
+[2025-12-09 17:12:48] 
+================================================================================
+[2025-12-09 17:12:48] STAGE 1: Verifier Selection - mmlu-llama70b
+[2025-12-09 17:12:48] ================================================================================
+[2025-12-09 17:12:59] ✅ Stage 1 complete for mmlu-llama70b
+[2025-12-09 17:12:59]    Results: results/mmlu-llama70b/verifier_selection_results.csv
+[2025-12-09 17:12:59] 
+================================================================================
+[2025-12-09 17:12:59] STAGE 2: Weaver Evaluation - mmlu-llama70b
+[2025-12-09 17:12:59] ================================================================================
+[2025-12-09 17:12:59] 
+  Configuration 1/27: k=5, β=0.25, γ=0.25
+[2025-12-09 17:12:59]   Using 5 verifiers
+[2025-12-09 17:13:02]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:13:02] 
+  Configuration 2/27: k=5, β=0.25, γ=0.5
+[2025-12-09 17:13:02]   Using 5 verifiers
+[2025-12-09 17:13:05]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:05] 
+  Configuration 3/27: k=5, β=0.25, γ=1.0
+[2025-12-09 17:13:05]   Using 5 verifiers
+[2025-12-09 17:13:08]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:08] 
+  Configuration 4/27: k=5, β=0.5, γ=0.25
+[2025-12-09 17:13:08]   Using 5 verifiers
+[2025-12-09 17:13:11]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:11] 
+  Configuration 5/27: k=5, β=0.5, γ=0.5
+[2025-12-09 17:13:11]   Using 5 verifiers
+[2025-12-09 17:13:14]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:14] 
+  Configuration 6/27: k=5, β=0.5, γ=1.0
+[2025-12-09 17:13:14]   Using 5 verifiers
+[2025-12-09 17:13:17]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:17] 
+  Configuration 7/27: k=5, β=1.0, γ=0.25
+[2025-12-09 17:13:17]   Using 5 verifiers
+[2025-12-09 17:13:19]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:19] 
+  Configuration 8/27: k=5, β=1.0, γ=0.5
+[2025-12-09 17:13:19]   Using 5 verifiers
+[2025-12-09 17:13:22]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:22] 
+  Configuration 9/27: k=5, β=1.0, γ=1.0
+[2025-12-09 17:13:22]   Using 5 verifiers
+[2025-12-09 17:13:25]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:13:25] 
+  Configuration 10/27: k=10, β=0.25, γ=0.25
+[2025-12-09 17:13:25]   Using 10 verifiers
+[2025-12-09 17:13:28]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:13:28] 
+  Configuration 11/27: k=10, β=0.25, γ=0.5
+[2025-12-09 17:13:28]   Using 10 verifiers
+[2025-12-09 17:13:31]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:13:31] 
+  Configuration 12/27: k=10, β=0.25, γ=1.0
+[2025-12-09 17:13:31]   Using 10 verifiers
+[2025-12-09 17:13:36]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:36] 
+  Configuration 13/27: k=10, β=0.5, γ=0.25
+[2025-12-09 17:13:36]   Using 10 verifiers
+[2025-12-09 17:13:39]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:13:39] 
+  Configuration 14/27: k=10, β=0.5, γ=0.5
+[2025-12-09 17:13:39]   Using 10 verifiers
+[2025-12-09 17:13:42]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:42] 
+  Configuration 15/27: k=10, β=0.5, γ=1.0
+[2025-12-09 17:13:42]   Using 10 verifiers
+[2025-12-09 17:13:45]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:45] 
+  Configuration 16/27: k=10, β=1.0, γ=0.25
+[2025-12-09 17:13:45]   Using 10 verifiers
+[2025-12-09 17:13:48]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:48] 
+  Configuration 17/27: k=10, β=1.0, γ=0.5
+[2025-12-09 17:13:48]   Using 10 verifiers
+[2025-12-09 17:13:51]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:51] 
+  Configuration 18/27: k=10, β=1.0, γ=1.0
+[2025-12-09 17:13:51]   Using 10 verifiers
+[2025-12-09 17:13:53]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:13:53] 
+  Configuration 19/27: k=15, β=0.25, γ=0.25
+[2025-12-09 17:13:53]   Using 15 verifiers
+[2025-12-09 17:13:57]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:13:57] 
+  Configuration 20/27: k=15, β=0.25, γ=0.5
+[2025-12-09 17:13:57]   Using 15 verifiers
+[2025-12-09 17:14:00]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:14:00] 
+  Configuration 21/27: k=15, β=0.25, γ=1.0
+[2025-12-09 17:14:00]   Using 15 verifiers
+[2025-12-09 17:14:04]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:14:04] 
+  Configuration 22/27: k=15, β=0.5, γ=0.25
+[2025-12-09 17:14:04]   Using 15 verifiers
+[2025-12-09 17:14:07]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:14:07] 
+  Configuration 23/27: k=15, β=0.5, γ=0.5
+[2025-12-09 17:14:07]   Using 15 verifiers
+[2025-12-09 17:14:10]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:14:10] 
+  Configuration 24/27: k=15, β=0.5, γ=1.0
+[2025-12-09 17:14:10]   Using 15 verifiers
+[2025-12-09 17:14:13]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:14:13] 
+  Configuration 25/27: k=15, β=1.0, γ=0.25
+[2025-12-09 17:14:13]   Using 15 verifiers
+[2025-12-09 17:14:16]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:14:16] 
+  Configuration 26/27: k=15, β=1.0, γ=0.5
+[2025-12-09 17:14:16]   Using 15 verifiers
+[2025-12-09 17:14:19]   ✅ Complete: Test Acc = 0.944
+[2025-12-09 17:14:19] 
+  Configuration 27/27: k=15, β=1.0, γ=1.0
+[2025-12-09 17:14:19]   Using 15 verifiers
+[2025-12-09 17:14:22]   ✅ Complete: Test Acc = 0.958
+[2025-12-09 17:14:22] ✅ Stage 2 complete for mmlu-llama70b
+[2025-12-09 17:14:22]    Summary: results/mmlu-llama70b/weaver_all_configs_summary.csv
+[2025-12-09 17:14:22] COMPLETED: mmlu-llama70b
+[2025-12-09 17:14:22] 
+################################################################################
+[2025-12-09 17:14:22] # PROCESSING DATASET: mmlu-llama8b
+[2025-12-09 17:14:22] # MMLU (Llama-8B)
+[2025-12-09 17:14:22] ################################################################################
+[2025-12-09 17:14:22] 
+================================================================================
+[2025-12-09 17:14:22] STAGE 1: Verifier Selection - mmlu-llama8b
+[2025-12-09 17:14:22] ================================================================================
+[2025-12-09 17:14:32] ✅ Stage 1 complete for mmlu-llama8b
+[2025-12-09 17:14:32]    Results: results/mmlu-llama8b/verifier_selection_results.csv
+[2025-12-09 17:14:32] 
+================================================================================
+[2025-12-09 17:14:32] STAGE 2: Weaver Evaluation - mmlu-llama8b
+[2025-12-09 17:14:32] ================================================================================
+[2025-12-09 17:14:32] 
+  Configuration 1/27: k=5, β=0.25, γ=0.25
+[2025-12-09 17:14:32]   Using 5 verifiers
+[2025-12-09 17:14:35]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:14:35] 
+  Configuration 2/27: k=5, β=0.25, γ=0.5
+[2025-12-09 17:14:35]   Using 5 verifiers
+[2025-12-09 17:14:38]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:14:38] 
+  Configuration 3/27: k=5, β=0.25, γ=1.0
+[2025-12-09 17:14:38]   Using 5 verifiers
+[2025-12-09 17:14:40]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:14:40] 
+  Configuration 4/27: k=5, β=0.5, γ=0.25
+[2025-12-09 17:14:40]   Using 5 verifiers
+[2025-12-09 17:14:43]   ✅ Complete: Test Acc = 0.817
+[2025-12-09 17:14:43] 
+  Configuration 5/27: k=5, β=0.5, γ=0.5
+[2025-12-09 17:14:43]   Using 5 verifiers
+[2025-12-09 17:14:45]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:14:45] 
+  Configuration 6/27: k=5, β=0.5, γ=1.0
+[2025-12-09 17:14:45]   Using 5 verifiers
+[2025-12-09 17:14:48]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:14:48] 
+  Configuration 7/27: k=5, β=1.0, γ=0.25
+[2025-12-09 17:14:48]   Using 5 verifiers
+[2025-12-09 17:14:50]   ✅ Complete: Test Acc = 0.859
+[2025-12-09 17:14:50] 
+  Configuration 8/27: k=5, β=1.0, γ=0.5
+[2025-12-09 17:14:50]   Using 5 verifiers
+[2025-12-09 17:14:53]   ✅ Complete: Test Acc = 0.887
+[2025-12-09 17:14:53] 
+  Configuration 9/27: k=5, β=1.0, γ=1.0
+[2025-12-09 17:14:53]   Using 5 verifiers
+[2025-12-09 17:14:56]   ✅ Complete: Test Acc = 0.887
+[2025-12-09 17:14:56] 
+  Configuration 10/27: k=10, β=0.25, γ=0.25
+[2025-12-09 17:14:56]   Using 10 verifiers
+[2025-12-09 17:14:59]   ✅ Complete: Test Acc = 0.901
+[2025-12-09 17:14:59] 
+  Configuration 11/27: k=10, β=0.25, γ=0.5
+[2025-12-09 17:14:59]   Using 10 verifiers
+[2025-12-09 17:15:01]   ✅ Complete: Test Acc = 0.901
+[2025-12-09 17:15:01] 
+  Configuration 12/27: k=10, β=0.25, γ=1.0
+[2025-12-09 17:15:01]   Using 10 verifiers
+[2025-12-09 17:15:04]   ✅ Complete: Test Acc = 0.901
+[2025-12-09 17:15:04] 
+  Configuration 13/27: k=10, β=0.5, γ=0.25
+[2025-12-09 17:15:04]   Using 10 verifiers
+[2025-12-09 17:15:07]   ✅ Complete: Test Acc = 0.901
+[2025-12-09 17:15:07] 
+  Configuration 14/27: k=10, β=0.5, γ=0.5
+[2025-12-09 17:15:07]   Using 10 verifiers
+[2025-12-09 17:15:10]   ✅ Complete: Test Acc = 0.901
+[2025-12-09 17:15:10] 
+  Configuration 15/27: k=10, β=0.5, γ=1.0
+[2025-12-09 17:15:10]   Using 10 verifiers
+[2025-12-09 17:15:14]   ✅ Complete: Test Acc = 0.901
+[2025-12-09 17:15:14] 
+  Configuration 16/27: k=10, β=1.0, γ=0.25
+[2025-12-09 17:15:14]   Using 10 verifiers
+[2025-12-09 17:15:17]   ✅ Complete: Test Acc = 0.901
+[2025-12-09 17:15:17] 
+  Configuration 17/27: k=10, β=1.0, γ=0.5
+[2025-12-09 17:15:17]   Using 10 verifiers
+[2025-12-09 17:15:20]   ✅ Complete: Test Acc = 0.901
+[2025-12-09 17:15:20] 
+  Configuration 18/27: k=10, β=1.0, γ=1.0
+[2025-12-09 17:15:20]   Using 10 verifiers
+[2025-12-09 17:15:23]   ✅ Complete: Test Acc = 0.901
+[2025-12-09 17:15:23] 
+  Configuration 19/27: k=15, β=0.25, γ=0.25
+[2025-12-09 17:15:23]   Using 15 verifiers
+[2025-12-09 17:15:25]   ✅ Complete: Test Acc = 0.859
+[2025-12-09 17:15:25] 
+  Configuration 20/27: k=15, β=0.25, γ=0.5
+[2025-12-09 17:15:25]   Using 15 verifiers
+[2025-12-09 17:15:28]   ✅ Complete: Test Acc = 0.859
+[2025-12-09 17:15:28] 
+  Configuration 21/27: k=15, β=0.25, γ=1.0
+[2025-12-09 17:15:28]   Using 15 verifiers
+[2025-12-09 17:15:31]   ✅ Complete: Test Acc = 0.859
+[2025-12-09 17:15:31] 
+  Configuration 22/27: k=15, β=0.5, γ=0.25
+[2025-12-09 17:15:31]   Using 15 verifiers
+[2025-12-09 17:15:34]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:15:34] 
+  Configuration 23/27: k=15, β=0.5, γ=0.5
+[2025-12-09 17:15:34]   Using 15 verifiers
+[2025-12-09 17:15:37]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:15:37] 
+  Configuration 24/27: k=15, β=0.5, γ=1.0
+[2025-12-09 17:15:37]   Using 15 verifiers
+[2025-12-09 17:15:41]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:15:41] 
+  Configuration 25/27: k=15, β=1.0, γ=0.25
+[2025-12-09 17:15:41]   Using 15 verifiers
+[2025-12-09 17:15:44]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:15:44] 
+  Configuration 26/27: k=15, β=1.0, γ=0.5
+[2025-12-09 17:15:44]   Using 15 verifiers
+[2025-12-09 17:15:48]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:15:48] 
+  Configuration 27/27: k=15, β=1.0, γ=1.0
+[2025-12-09 17:15:48]   Using 15 verifiers
+[2025-12-09 17:15:52]   ✅ Complete: Test Acc = 0.845
+[2025-12-09 17:15:52] ✅ Stage 2 complete for mmlu-llama8b
+[2025-12-09 17:15:52]    Summary: results/mmlu-llama8b/weaver_all_configs_summary.csv
+[2025-12-09 17:15:52] COMPLETED: mmlu-llama8b
+[2025-12-09 17:15:52] 
+================================================================================
+[2025-12-09 17:15:52] AGGREGATING RESULTS
+[2025-12-09 17:15:52] ================================================================================
+[2025-12-09 17:15:52] ✅ Combined results saved to: results/all_datasets_summary.csv
+[2025-12-09 17:15:52]    Total configurations: 158
+[2025-12-09 17:15:52]    Datasets completed: 6

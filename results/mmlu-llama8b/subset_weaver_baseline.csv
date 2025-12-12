@@ -1,0 +1,2 @@
+dataset_name,approach,num_verifiers,train_select_accuracy,test_select_accuracy,train_sample_accuracy,test_sample_accuracy,verifiers,model_size
+mmlu-llama8b,Subsetted Weaver,14,0.8450704225352113,0.8450704225352113,0.6749295774647888,0.6749295774647888,"EurusPRMStage2_max_scores, GRMGemma_scores, ArmorRM_scores, QwenPRM_min_scores, EurusPRMStage1_min_scores, GPM_scores, QwenPRM_max_scores, QwenPRM_avg_scores, URM_scores, OffsetBias_scores, EurusPRMStage2_avg_scores, GRMLlama32_scores, EurusPRMStage1_avg_scores, EurusPRMStage2_min_scores",8B
